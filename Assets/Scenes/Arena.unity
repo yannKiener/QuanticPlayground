@@ -418,6 +418,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerToFire: {fileID: 1148437716}
   fireForce: {x: 10, y: 0}
+  moveSpeed: 1.3
+  moveAfter: 1
+  deleteAfterMove: 3
 --- !u!1 &895294420
 GameObject:
   m_ObjectHideFlags: 0

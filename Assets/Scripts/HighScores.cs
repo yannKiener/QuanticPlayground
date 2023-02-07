@@ -5,11 +5,17 @@ using UnityEngine;
 [System.Serializable]
 public class HighScores
 {
+    private int scoreCountLimit = 10;
     Dictionary<int, Score> highScores;
 
     public HighScores(Dictionary<int, Score> highScores)
     {
         this.highScores = highScores;
+    }
+
+    public Dictionary<int, Score> GetDictionary()
+    {
+        return highScores;
     }
 
     public void AddScore(Score score)
@@ -25,23 +31,18 @@ public class HighScores
                 return;
             }
         }
-        //If no HighScore is beaten and map isn't full (10), we add the score at the end.
-        if (i < 10)
+        //If no HighScore is beaten and map isn't full, we add the score at the end.
+        if (i < scoreCountLimit)
         {
             Debug.Log("New score at bottom.");
             highScores.Add(i + 1, score);
         }
     }
 
-    public Dictionary<int, Score> GetDictionary()
-    {
-        return highScores;
-    }
-
     //Used to "push down" lower existing scores
     private void pushScore(int position, Score score)
     {
-        if (position < 10)
+        if (position < scoreCountLimit)
         {
             if (highScores.ContainsKey(position))
             {

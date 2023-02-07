@@ -11,13 +11,19 @@ public class TutorialController : MonoBehaviour
 
     void Start()
     {
-        if(player == null)
+        if (!GameController.getInstance().isTutorial)
         {
-            Debug.LogError("PLAYER IS NOT SET IN INSPECTOR");
-        }
-        if (objectivesToShatter.FindAll(GameObjectIsStillHere).Count == 0)
+            Destroy(this);
+        } else
         {
-            Debug.LogError("Something is wrong with tutorial objectives: check inspector for TutorialController.");
+            if (player == null)
+            {
+                Debug.LogError("PLAYER IS NOT SET IN INSPECTOR");
+            }
+            if (objectivesToShatter.FindAll(GameObjectIsStillHere).Count == 0)
+            {
+                Debug.LogError("Something is wrong with tutorial objectives: check inspector for TutorialController.");
+            }
         }
     }
 

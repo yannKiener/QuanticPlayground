@@ -51,8 +51,9 @@ public class QuantumTrailingSystem : MonoBehaviour
             DestroyImmediate(collider);
         }
 
-        tempGameObject.AddComponent<TrailingFade>();
+        tempGameObject.transform.position = gameObject.transform.position;
 
+        tempGameObject.AddComponent<TrailingFade>();
         Destroy(tempGameObject, GameController.getInstance().trailDuration);
     }
 

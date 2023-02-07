@@ -23,6 +23,10 @@ public class MusicManager : MonoBehaviour
     private void Update()
     {
         musicTimer += Time.unscaledDeltaTime;
+        if (musicTimer > basicMusic.length || musicTimer > quantumMusic.length)
+        {
+            musicTimer = 0;
+        }
     }
 
     public static void PlayBasicMusic()

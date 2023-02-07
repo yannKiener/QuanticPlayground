@@ -51,7 +51,6 @@ public class GameController : MonoBehaviour
     public GameObject background;
     public GameObject playerGameObject;
     public GameObject gameOverScreen;
-    public GameObject gameOverScoreNumberGameObject;
     public GameObject gameOverTimeNumberGameObject;
     public GameObject tutorialWonScreen;
     public GameObject tutorialTimeNumberGameObject;
@@ -60,12 +59,11 @@ public class GameController : MonoBehaviour
     public string timerPreText;
     public GameObject timeTextGameObject;
     public GameObject RandomLevelGameOverButton;
+    public GameObject RandomLevelMenuButton;
 
 
     private Rigidbody2D playerRigidBody;
     private float playerSpeed;
-    private Text scoreText;
-    private Text gameOverScoreText;
     private Text timeText;
     private Text gameOverTimeText;
     private Text tutorialTimeText;
@@ -86,13 +84,10 @@ public class GameController : MonoBehaviour
     void Start()
     {
         playerRigidBody = playerGameObject.GetComponent<Rigidbody2D>();
-        scoreText = scoreTextGameObject.GetComponent<Text>();
-        gameOverScoreText = gameOverScoreNumberGameObject.GetComponent<Text>();
         if (isTutorial)
         {
             RandomLevelGameOverButton.SetActive(false);
             scoreTextGameObject.SetActive(false);
-            gameOverScoreText.text = "-";
         }
         timeText = timeTextGameObject.GetComponent<Text>();
         gameOverTimeText = gameOverTimeNumberGameObject.GetComponent<Text>();
@@ -127,16 +122,6 @@ public class GameController : MonoBehaviour
         {
             if(playerRigidBody != null)
             {
-                if (!isTutorial)
-                {
-                    // Manages score update
-                    playerSpeed = playerRigidBody.velocity.magnitude;
-                    GameUtils.AddScore(Time.deltaTime * playerSpeed * playerSpeed * playerSpeed * scoreSpeedMultiplier);
-                    scoreText.text = scorePreText + GameUtils.GetScore();
-                    gameOverScoreText.text = GameUtils.GetScore().ToString();
-                }
-               
-
                 // Manages timer update
                 GameUtils.AddTime(Time.deltaTime);
                 timeText.text = timerPreText + GameUtils.GetElapsedTime().ToString("F2");
@@ -205,10 +190,10 @@ public class GameController : MonoBehaviour
                     randomPrefab.transform.position = new Vector3(x, y, 0);
                     float rotationZ = getNextRandomBetween(pseudoRandom, -1f, 1f) * 360;
                     randomPrefab.transform.Rotate(new Vector3(0, 0, rotationZ));
-                    // Updates local scales, but distors the sprite!
-                    //float scaleX = getNextRandomBetween(pseudoRandom, instance.minScale, instance.maxScale);
-                    //float scaleY = getNextRandomBetween(pseudoRandom, instance.minScale, instance.maxScale);
-                    //randomPrefab.transform.localScale = new Vector3(scaleX, scaleY, 1);
+
+                    float scaleX = getNextRandomBetween(pseudoRandom, instance.minScale, instance.maxScale);
+                    float scaleY = getNextRandomBetween(pseudoRandom, instance.minScale, instance.maxScale);
+                    randomPrefab.transform.localScale = new Vector3(scaleX, scaleY, 1);
                 }
             }
         }

@@ -55,8 +55,8 @@ MonoBehaviour:
   playerBasicColor: {r: 0.972549, g: 0.88107514, b: 0.02352939, a: 1}
   playerQuantumColor: {r: 0.6774016, g: 0.023529433, b: 0.99215686, a: 1}
   wallColor: {r: 0, g: 0, b: 0, a: 1}
-  basicBreakableWallColor: {r: 0.972549, g: 0.88235295, b: 0.023529412, a: 1}
-  quantumBreakableWallColor: {r: 0.6784314, g: 0.023529412, b: 0.99215686, a: 1}
+  basicBreakableWallColor: {r: 1, g: 0.9556175, b: 0.5330188, a: 1}
+  quantumBreakableWallColor: {r: 0.8383586, g: 0.495283, b: 1, a: 1}
   alwaysBreakableWallColor: {r: 0.89411765, g: 0.4509804, b: 0.50980395, a: 1}
   basicKillerWallColor: {r: 0.972549, g: 0.88235295, b: 0.023529412, a: 1}
   quantumKillerWallColor: {r: 0.6784314, g: 0.02745098, b: 0.99215686, a: 1}

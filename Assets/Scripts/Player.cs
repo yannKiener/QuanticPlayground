@@ -4,17 +4,8 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public GameObject background;
-    public Color basicBackgroundColor;
-    public Color quantumBackgroundColor;
-
-    private SpriteRenderer backgroundSpRenderer;
-
-    private SpriteRenderer playerSpRenderer;
     private Rigidbody2D playerRigidbody;
     private float gravityScale;
-    public Color playerBasicColor;
-    public Color playerQuantumColor;
     public PhysicsMaterial2D basicBallBounciness;
     public PhysicsMaterial2D quantumBallBounciness;
 
@@ -24,8 +15,6 @@ public class Player : MonoBehaviour
     {
         playerRigidbody = GetComponent<Rigidbody2D>();
         gravityScale = playerRigidbody.gravityScale;
-        playerSpRenderer = GetComponent<SpriteRenderer>();
-        backgroundSpRenderer = background.GetComponent<SpriteRenderer>();
         switchToBasic();
     }
 
@@ -50,8 +39,8 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Switched to Quantum world");
         GameUtils.SetPlayerIsQuantum(true);
-        backgroundSpRenderer.color = quantumBackgroundColor;
-        playerSpRenderer.color = playerQuantumColor;
+        GameController.getInstance().SwitchColors(true);
+        gameObject.AddComponent<QuantumTrailingSystem>();
         playerRigidbody.sharedMaterial = quantumBallBounciness;
         playerRigidbody.gravityScale = 0.0f;
     }
@@ -60,8 +49,12 @@ public class Player : MonoBehaviour
     {
         //Debug.Log("Switched to Basic world");
         GameUtils.SetPlayerIsQuantum(false);
-        backgroundSpRenderer.color = basicBackgroundColor;
-        playerSpRenderer.color = playerBasicColor;
+        GameController.getInstance().SwitchColors(false);
+        QuantumTrailingSystem trailingSystem = GetComponent<QuantumTrailingSystem>();
+        if (trailingSystem != null)
+        {
+            Destroy(trailingSystem);
+        }
         playerRigidbody.sharedMaterial = basicBallBounciness;
         playerRigidbody.gravityScale = gravityScale;
     }

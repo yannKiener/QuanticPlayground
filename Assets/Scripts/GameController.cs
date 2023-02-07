@@ -5,14 +5,24 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-
-    public GameObject playerGameObject;
+    [Header("Game Balance")]
     public float scoreSpeedMultiplier;
-    public string scorePreText;
+
+    [Header("GameObjects instances")]
+    public GameObject background;
+    public GameObject playerGameObject;
     public GameObject scoreTextGameObject;
     public GameObject gameOverGameObject;
     public GameObject gameOverScoreTextGameObject;
+    public string scorePreText;
 
+    [Header("BackGround and player colors")]
+    public Color basicBackgroundColor;
+    public Color quantumBackgroundColor;
+    public Color playerBasicColor;
+    public Color playerQuantumColor;
+
+    [Header("Wall colors")]
     public Color wallColor;
     public Color basicBreakableWallColor;
     public Color quantumBreakableWallColor;
@@ -27,6 +37,8 @@ public class GameController : MonoBehaviour
     private float playerSpeed;
     private Text scoreText;
     private Text gameOverScoreText;
+    private SpriteRenderer backgroundSpRenderer;
+    private SpriteRenderer playerSpRenderer;
 
     private static GameController instance;
 
@@ -40,6 +52,8 @@ public class GameController : MonoBehaviour
         scoreText = scoreTextGameObject.GetComponent<Text>();
         gameOverScoreText = gameOverScoreTextGameObject.GetComponent<Text>();
         gameOverGameObject.SetActive(false);
+        backgroundSpRenderer = background.GetComponent<SpriteRenderer>();
+        playerSpRenderer = playerGameObject.GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -54,6 +68,19 @@ public class GameController : MonoBehaviour
         } else
         {
             gameOverGameObject.SetActive(true);
+        }
+    }
+
+    public void SwitchColors(bool isQuantum)
+    {
+        if (isQuantum)
+        {
+            backgroundSpRenderer.color = GameController.getInstance().quantumBackgroundColor;
+            playerSpRenderer.color = GameController.getInstance().playerQuantumColor;
+        } else
+        {
+            backgroundSpRenderer.color = GameController.getInstance().basicBackgroundColor;
+            playerSpRenderer.color = GameController.getInstance().playerBasicColor;
         }
     }
 

@@ -1456,10 +1456,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 1758172019}
-  basicBackgroundColor: {r: 0.8396226, g: 0.74853146, b: 0.74853146, a: 1}
-  quantumBackgroundColor: {r: 0.42045617, g: 0.13501246, b: 0.7735849, a: 1}
-  playerBasicColor: {r: 0.54412895, g: 0.022917405, b: 0.9716981, a: 1}
-  playerQuantumColor: {r: 0, g: 0, b: 0, a: 1}
   basicBallBounciness: {fileID: 6200000, guid: 269e60ee72f886c429505b9bd303e155, type: 2}
   quantumBallBounciness: {fileID: 6200000, guid: 27475409077fbf746a19511f371df67f,
     type: 2}
@@ -1605,12 +1601,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33620eb6161a8984ab3a3c28e653c7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerGameObject: {fileID: 1148437716}
   scoreSpeedMultiplier: 0.1
   scorePreText: 'Score : '
+  background: {fileID: 1758172019}
+  playerGameObject: {fileID: 1148437716}
   scoreTextGameObject: {fileID: 1044643759}
   gameOverGameObject: {fileID: 1444972343}
   gameOverScoreTextGameObject: {fileID: 455786671}
+  basicBackgroundColor: {r: 0.754717, g: 0.66571736, b: 0.66571736, a: 1}
+  quantumBackgroundColor: {r: 0.41960785, g: 0.13333334, b: 0.38039216, a: 1}
+  playerBasicColor: {r: 0.54509807, g: 0.023529412, b: 0.972549, a: 1}
+  playerQuantumColor: {r: 0, g: 0, b: 0, a: 1}
   wallColor: {r: 0, g: 0, b: 0, a: 1}
   basicBreakableWallColor: {r: 0.07112521, g: 0.9433962, b: 0, a: 1}
   quantumBreakableWallColor: {r: 0.9622642, g: 0.44518408, b: 0, a: 1}

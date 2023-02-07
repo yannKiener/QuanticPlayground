@@ -199,6 +199,16 @@ PrefabInstance:
       propertyPath: isBasicBreakable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7221177691761691403, guid: 7d586ff6412ea954daee7e865c255813,
+        type: 3}
+      propertyPath: isBasicBreakable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7221177691761691403, guid: 7d586ff6412ea954daee7e865c255813,
+        type: 3}
+      propertyPath: isQuantumBreakable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7876341245367078130, guid: 7d586ff6412ea954daee7e865c255813,
         type: 3}
       propertyPath: m_Name
@@ -295,12 +305,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1048528705461332116}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1122359552 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4058322885487223122, guid: 7d586ff6412ea954daee7e865c255813,
-    type: 3}
-  m_PrefabInstance: {fileID: 809790927}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1148437716 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5943504490986759774, guid: d4aeb930ecb9cd74fbdc37d1727e4189,
@@ -318,6 +322,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7899359456851359362, guid: 767b3066bf87bc540ac0764fb4f9d3a1,
     type: 3}
   m_PrefabInstance: {fileID: 2024194480}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1591089086 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3507175294655873372, guid: 7d586ff6412ea954daee7e865c255813,
+    type: 3}
+  m_PrefabInstance: {fileID: 809790927}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1615918825 stripped
 GameObject:
@@ -472,6 +482,11 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3731749454916209708, guid: 732f2bd0faa4fe84bbaf08ba516910cd,
+        type: 3}
+      propertyPath: isBasicKiller
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107650159486272831, guid: 732f2bd0faa4fe84bbaf08ba516910cd,
         type: 3}
       propertyPath: isBasicKiller
       value: 0
@@ -730,6 +745,11 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3731749454916209708, guid: 732f2bd0faa4fe84bbaf08ba516910cd,
+        type: 3}
+      propertyPath: isBasicKiller
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4107650159486272831, guid: 732f2bd0faa4fe84bbaf08ba516910cd,
         type: 3}
       propertyPath: isBasicKiller
       value: 0
@@ -1024,7 +1044,7 @@ PrefabInstance:
         type: 3}
       propertyPath: objectivesToShatter.Array.data[0]
       value: 
-      objectReference: {fileID: 1122359552}
+      objectReference: {fileID: 1591089086}
     - target: {fileID: 1515043321413551381, guid: d3e930bf7478dbb4bb90ebaec4d2e0af,
         type: 3}
       propertyPath: player

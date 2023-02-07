@@ -15,6 +15,7 @@ public class WallBehaviour : MonoBehaviour
 
     private List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
     private List<Collider2D> colliders = new List<Collider2D>();
+    private List<SpriteMask> spriteMasks = new List<SpriteMask>();
     private bool isQuantumKillerOnly = false;
     private bool isBasicKillerOnly = false;
 
@@ -23,6 +24,7 @@ public class WallBehaviour : MonoBehaviour
     {
         SetSpriteRenderers();
         SetColliders();
+        SetBreakableMasks();
         isQuantumKillerOnly = isQuantumKiller && (!isBasicKiller && !isBasicBreakable);
         isBasicKillerOnly = isBasicKiller && (!isQuantumKiller && !isQuantumBreakable);
 
@@ -57,53 +59,43 @@ public class WallBehaviour : MonoBehaviour
         {
             SetColors(GameController.getInstance().alwaysKillerWallColor);
         }
+
+        if (!isBasicBreakable && !isQuantumBreakable)
+        {
+            foreach(SpriteMask spriteMask in spriteMasks)
+            {
+                DestroyImmediate(spriteMask);
+            }
+        }
+
+       
     }
 
-   private void SetSpriteRenderers()
+    private void Update()
     {
-        AddSpriteRenderer(this.gameObject);
-        foreach (Transform child in transform)
+        if (GameUtils.IsPlayerinQuantumMode())
         {
-            AddSpriteRenderer(child.gameObject);
+            if (isQuantumKillerOnly)
+            {
+                ShowGameObject();
+            }
+            if (isBasicKillerOnly)
+            {
+                HideGameObject();
+            }
+           
+        } else
+        {
+            if (isQuantumKillerOnly)
+            {
+                HideGameObject();
+            }
+            if (isBasicKillerOnly)
+            {
+                ShowGameObject();
+            }
         }
     }
-
-    private void AddSpriteRenderer(GameObject go)
-    {
-        SpriteRenderer selfSpriteRenderer = go.GetComponent<SpriteRenderer>();
-        if (selfSpriteRenderer != null)
-        {
-            spriteRenderers.Add(selfSpriteRenderer);
-        }
-    }
-
-    private void SetColliders()
-    {
-        AddCollider(this.gameObject);
-        foreach (Transform child in transform)
-        {
-            AddCollider(child.gameObject);
-        }
-    }
-
-    private void AddCollider(GameObject go)
-    {
-        Collider2D selfCollider = go.GetComponent<Collider2D>();
-        if (selfCollider != null)
-        {
-            colliders.Add(selfCollider);
-        }
-    }
-
-    private void SetColors(Color col)
-    {
-        foreach(SpriteRenderer sp in spriteRenderers)
-        {
-            sp.color = col;
-        }
-    }
-
-
 
     void OnCollisionStay2D(Collision2D col)
     {
@@ -157,30 +149,65 @@ public class WallBehaviour : MonoBehaviour
         }
     }
 
-
-    private void Update()
+    private void SetBreakableMasks()
     {
-        if (GameUtils.IsPlayerinQuantumMode())
+        AddSpriteMask(this.gameObject);
+        foreach (Transform child in transform)
         {
-            if (isQuantumKillerOnly)
-            {
-                ShowGameObject();
-            }
-            if (isBasicKillerOnly)
-            {
-                HideGameObject();
-            }
-           
-        } else
+            AddSpriteMask(child.gameObject);
+        }
+    }
+
+    private void AddSpriteMask(GameObject go)
+    {
+        SpriteMask selfSpriteMask = go.GetComponent<SpriteMask>();
+        if (selfSpriteMask != null)
         {
-            if (isQuantumKillerOnly)
-            {
-                HideGameObject();
-            }
-            if (isBasicKillerOnly)
-            {
-                ShowGameObject();
-            }
+            spriteMasks.Add(selfSpriteMask);
+        }
+    }
+
+    private void SetSpriteRenderers()
+    {
+        AddSpriteRenderer(this.gameObject);
+        foreach (Transform child in transform)
+        {
+            AddSpriteRenderer(child.gameObject);
+        }
+    }
+
+    private void AddSpriteRenderer(GameObject go)
+    {
+        SpriteRenderer selfSpriteRenderer = go.GetComponent<SpriteRenderer>();
+        if (selfSpriteRenderer != null)
+        {
+            spriteRenderers.Add(selfSpriteRenderer);
+        }
+    }
+
+    private void SetColliders()
+    {
+        AddCollider(this.gameObject);
+        foreach (Transform child in transform)
+        {
+            AddCollider(child.gameObject);
+        }
+    }
+
+    private void AddCollider(GameObject go)
+    {
+        Collider2D selfCollider = go.GetComponent<Collider2D>();
+        if (selfCollider != null)
+        {
+            colliders.Add(selfCollider);
+        }
+    }
+
+    private void SetColors(Color col)
+    {
+        foreach (SpriteRenderer sp in spriteRenderers)
+        {
+            sp.color = col;
         }
     }
 

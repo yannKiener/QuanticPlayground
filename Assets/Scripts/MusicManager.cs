@@ -10,8 +10,6 @@ public class MusicManager : MonoBehaviour
 
     private static MusicManager instance;
 	private AudioSource audioSource;
-    private bool isFading = false;
-    private static float maxVolume = 1;
     private float musicTimer = 0;
 
     public void Start()

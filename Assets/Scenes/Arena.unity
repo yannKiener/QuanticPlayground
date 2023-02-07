@@ -615,8 +615,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1148437719}
-  - component: {fileID: 1148437718}
   - component: {fileID: 1148437717}
+  - component: {fileID: 1148437718}
   - component: {fileID: 1148437720}
   - component: {fileID: 1148437721}
   m_Layer: 0
@@ -641,6 +641,11 @@ MonoBehaviour:
   background: {fileID: 1758172019}
   basicBackgroundColor: {r: 0.8396226, g: 0.74853146, b: 0.74853146, a: 1}
   quantumBackgroundColor: {r: 0.42045617, g: 0.13501246, b: 0.7735849, a: 1}
+  playerBasicColor: {r: 0.54412895, g: 0.022917405, b: 0.9716981, a: 1}
+  playerQuantumColor: {r: 0, g: 0, b: 0, a: 1}
+  basicBallBounciness: {fileID: 6200000, guid: 269e60ee72f886c429505b9bd303e155, type: 2}
+  quantumBallBounciness: {fileID: 6200000, guid: 27475409077fbf746a19511f371df67f,
+    type: 2}
 --- !u!212 &1148437718
 SpriteRenderer:
   m_ObjectHideFlags: 0

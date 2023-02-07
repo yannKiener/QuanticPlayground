@@ -11,11 +11,23 @@ public class Player : MonoBehaviour
     private SpriteRenderer backgroundSpRenderer;
     private bool isInQuantum = false;
 
+    private SpriteRenderer playerSpRenderer;
+    private Rigidbody2D playerRigidbody;
+    private float gravityScale;
+    public Color playerBasicColor;
+    public Color playerQuantumColor;
+    public PhysicsMaterial2D basicBallBounciness;
+    public PhysicsMaterial2D quantumBallBounciness;
+
+
     // Start is called before the first frame update
     void Start()
     {
+        playerRigidbody = GetComponent<Rigidbody2D>();
+        gravityScale = playerRigidbody.gravityScale;
+        playerSpRenderer = GetComponent<SpriteRenderer>();
         backgroundSpRenderer = background.GetComponent<SpriteRenderer>();
-        //backgroundSpRenderer.color = basicBackgroundColor;
+        switchToBasic();
     }
 
     // Update is called once per frame
@@ -40,6 +52,9 @@ public class Player : MonoBehaviour
         Debug.Log("Switched to Quantum world");
         isInQuantum = true;
         backgroundSpRenderer.color = quantumBackgroundColor;
+        playerSpRenderer.color = playerQuantumColor;
+        playerRigidbody.sharedMaterial = quantumBallBounciness;
+        playerRigidbody.gravityScale = 0.0f;
     }
 
     private void switchToBasic()
@@ -47,5 +62,8 @@ public class Player : MonoBehaviour
         Debug.Log("Switched to Basic world");
         isInQuantum = false;
         backgroundSpRenderer.color = basicBackgroundColor;
+        playerSpRenderer.color = playerBasicColor;
+        playerRigidbody.sharedMaterial = basicBallBounciness;
+        playerRigidbody.gravityScale = gravityScale;
     }
 }

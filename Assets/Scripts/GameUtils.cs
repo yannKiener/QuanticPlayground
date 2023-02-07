@@ -92,6 +92,7 @@ public static class GameUtils
     
     public static void SetCurrentSeed(string seed)
     {
+        Debug.Log("Seed for this level : ");
         currentSeed = seed;
     }
     public static string GetCurrentSeed()

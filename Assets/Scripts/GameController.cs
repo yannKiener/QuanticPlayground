@@ -144,6 +144,7 @@ public class GameController : MonoBehaviour
         {
             instance.seedOrRandomIfEmpty = Time.time.ToString();
         }
+        
         GameUtils.SetCurrentSeed(instance.seedOrRandomIfEmpty);
         System.Random pseudoRandom = new System.Random(instance.seedOrRandomIfEmpty.GetHashCode());
         

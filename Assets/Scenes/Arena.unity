@@ -1455,7 +1455,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5bfa0bf3e27125f45a93db2dbf05e820, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  background: {fileID: 1758172019}
   basicBallBounciness: {fileID: 6200000, guid: 269e60ee72f886c429505b9bd303e155, type: 2}
   quantumBallBounciness: {fileID: 6200000, guid: 27475409077fbf746a19511f371df67f,
     type: 2}
@@ -1602,12 +1601,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   scoreSpeedMultiplier: 0.1
-  scorePreText: 'Score : '
   background: {fileID: 1758172019}
   playerGameObject: {fileID: 1148437716}
   scoreTextGameObject: {fileID: 1044643759}
   gameOverGameObject: {fileID: 1444972343}
   gameOverScoreTextGameObject: {fileID: 455786671}
+  scorePreText: 'Score : '
   basicBackgroundColor: {r: 0.754717, g: 0.66571736, b: 0.66571736, a: 1}
   quantumBackgroundColor: {r: 0.41960785, g: 0.13333334, b: 0.38039216, a: 1}
   playerBasicColor: {r: 0.54509807, g: 0.023529412, b: 0.972549, a: 1}
@@ -1621,6 +1620,8 @@ MonoBehaviour:
   alwaysKillerWallColor: {r: 0.8679245, g: 0, b: 0.47322255, a: 1}
   basicGhostWallColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
   quantumGhostWallColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
+  trailTimer: 0.01
+  trailDuration: 3
 --- !u!1 &1426612324
 GameObject:
   m_ObjectHideFlags: 0

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
-    [Header("Game Balance")]
+    [Header("General Balance")]
     public float scoreSpeedMultiplier;
 
     [Header("GameObjects instances")]
@@ -32,6 +32,10 @@ public class GameController : MonoBehaviour
     public Color alwaysKillerWallColor;
     public Color basicGhostWallColor;
     public Color quantumGhostWallColor;
+
+    [Header("Quantum Trailing")]
+    public float trailTimer;
+    public float trailDuration;
 
     private Rigidbody2D playerRigidBody;
     private float playerSpeed;

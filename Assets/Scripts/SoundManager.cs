@@ -6,6 +6,7 @@ using System.Linq;
 public class SoundManager : MonoBehaviour
 {
     public AudioClip gameOverSoundEffect;
+    public AudioClip gameWonSoundEffect;
 
     private static GameObject thisGameObject;
     private static SoundManager instance;
@@ -83,6 +84,12 @@ public class SoundManager : MonoBehaviour
     {
         StopAll();
         PlaySound(instance.gameOverSoundEffect);
+    }
+
+    public static void PlayGameWonSound()
+    {
+        StopAll();
+        PlaySound(instance.gameWonSoundEffect);
     }
 
     private static AudioClip GetRandomClip(List<AudioClip> audioClips)

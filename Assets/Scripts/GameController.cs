@@ -47,13 +47,15 @@ public class GameController : MonoBehaviour
     [Header("GameObjects instances")]
     public GameObject background;
     public GameObject playerGameObject;
-    public GameObject gameOverGameObject;
-    public GameObject gameOverScoreTextGameObject;
-    public GameObject scoreTextGameObject;
+    public GameObject gameOverScreen;
+    public GameObject gameOverScoreNumberGameObject;
+    public GameObject gameOverTimeNumberGameObject;
+    public GameObject tutorialWonScreen;
+    public GameObject tutorialTimeNumberGameObject;
     public string scorePreText;
-    public GameObject gameOverTimeTextGameObject;
-    public GameObject timeTextGameObject;
+    public GameObject scoreTextGameObject;
     public string timerPreText;
+    public GameObject timeTextGameObject;
 
 
     private Rigidbody2D playerRigidBody;
@@ -62,12 +64,11 @@ public class GameController : MonoBehaviour
     private Text gameOverScoreText;
     private Text timeText;
     private Text gameOverTimeText;
+    private Text tutorialTimeText;
     private SpriteRenderer backgroundSpRenderer;
     private SpriteRenderer playerSpRenderer;
 
     private static GameController instance;
-
-
 
     // Start is called before the first frame update
     void Start()
@@ -75,14 +76,17 @@ public class GameController : MonoBehaviour
         instance = this;
         playerRigidBody = playerGameObject.GetComponent<Rigidbody2D>();
         scoreText = scoreTextGameObject.GetComponent<Text>();
+        gameOverScoreText = gameOverScoreNumberGameObject.GetComponent<Text>();
         if (isTutorial)
         {
             scoreTextGameObject.SetActive(false);
+            gameOverScoreText.text = "-";
         }
-        gameOverScoreText = gameOverScoreTextGameObject.GetComponent<Text>();
         timeText = timeTextGameObject.GetComponent<Text>();
-        gameOverTimeText = gameOverTimeTextGameObject.GetComponent<Text>();
-        gameOverGameObject.SetActive(false);
+        gameOverTimeText = gameOverTimeNumberGameObject.GetComponent<Text>();
+        tutorialTimeText = tutorialTimeNumberGameObject.GetComponent<Text>();
+        gameOverScreen.SetActive(false);
+        tutorialWonScreen.SetActive(false);
         backgroundSpRenderer = background.GetComponent<SpriteRenderer>();
         playerSpRenderer = playerGameObject.GetComponent<SpriteRenderer>();
 
@@ -95,7 +99,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!GameUtils.IsGameOver())
+        if (!GameUtils.IsGameOver() && !GameUtils.IsGameWon())
         {
             if(playerRigidBody != null)
             {
@@ -107,11 +111,13 @@ public class GameController : MonoBehaviour
                     scoreText.text = scorePreText + GameUtils.GetScore();
                     gameOverScoreText.text = GameUtils.GetScore().ToString();
                 }
+               
 
                 // Manages timer update
                 GameUtils.AddTime(Time.deltaTime);
                 timeText.text = timerPreText + GameUtils.GetElapsedTime().ToString("F2");
                 gameOverTimeText.text = GameUtils.GetElapsedTime().ToString("F2") + " s";
+                tutorialTimeText.text = GameUtils.GetElapsedTime().ToString("F2") + " s";
 
             }
             else
@@ -120,7 +126,13 @@ public class GameController : MonoBehaviour
             }
         } else
         {
-            gameOverGameObject.SetActive(true);
+            if (GameUtils.IsGameWon())
+            {
+                tutorialWonScreen.SetActive(true);
+            } else
+            {
+                gameOverScreen.SetActive(true);
+            }
         }
     }
 

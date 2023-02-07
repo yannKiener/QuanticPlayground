@@ -164,7 +164,6 @@ public class WallBehaviour : MonoBehaviour
                 {
                     Destroy(gameObject, destroyDelay);
                 }
-
                 if (isBasicGhostly)
                 {
                     Debug.Log("You will go trough some other day.");

@@ -398,6 +398,31 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 895345266888368759, guid: d0b88ec31d37fbd42994b3042d4bb0d4,
         type: 3}
+    - target: {fileID: 1942791722792503550, guid: 647b8b5df6284404c9b6d78f4dd67cc2,
+        type: 3}
+      propertyPath: gameOverScreen
+      value: 
+      objectReference: {fileID: 895652755}
+    - target: {fileID: 1942791722792503550, guid: 647b8b5df6284404c9b6d78f4dd67cc2,
+        type: 3}
+      propertyPath: gameOverTimeNumberGameObject
+      value: 
+      objectReference: {fileID: 1457056624}
+    - target: {fileID: 1942791722792503550, guid: 647b8b5df6284404c9b6d78f4dd67cc2,
+        type: 3}
+      propertyPath: gameOverScoreNumberGameObject
+      value: 
+      objectReference: {fileID: 1486019148}
+    - target: {fileID: 1942791722792503550, guid: 647b8b5df6284404c9b6d78f4dd67cc2,
+        type: 3}
+      propertyPath: tutorialWonScreen
+      value: 
+      objectReference: {fileID: 941495675}
+    - target: {fileID: 1942791722792503550, guid: 647b8b5df6284404c9b6d78f4dd67cc2,
+        type: 3}
+      propertyPath: tutorialTimeNumberGameObject
+      value: 
+      objectReference: {fileID: 941495674}
     - target: {fileID: 1942791722792503551, guid: 647b8b5df6284404c9b6d78f4dd67cc2,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -585,6 +610,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 55b69ff8423d4de4d914bc969d9dcd41, type: 3}
+--- !u!1 &941495674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 543174273, guid: 55b69ff8423d4de4d914bc969d9dcd41,
+    type: 3}
+  m_PrefabInstance: {fileID: 941495673}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &941495675 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2109848391, guid: 55b69ff8423d4de4d914bc969d9dcd41,
+    type: 3}
+  m_PrefabInstance: {fileID: 941495673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &956471828
 PrefabInstance:
   m_ObjectHideFlags: 0

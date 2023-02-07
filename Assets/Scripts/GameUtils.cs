@@ -9,6 +9,7 @@ public static class GameUtils
     private static float score = 0;
     private static float elapsedTime = 0;
     private static bool isGameOver = false;
+    private static bool isGameWon = false;
     private static bool isGamePaused = false;
     private static string currentSeed;
 
@@ -27,6 +28,11 @@ public static class GameUtils
         return isGameOver;
     }
 
+    public static bool IsGameWon()
+    {
+        return isGameWon;
+    }
+
     public static void ReStartGame()
     {
         resetGameInfo();
@@ -39,10 +45,18 @@ public static class GameUtils
         currentSeed = null;
         SceneManager.LoadScene("RandomPlayground");
     }
+
+    public static void StartScene(string levelName)
+    {
+        resetGameInfo();
+        currentSeed = null;
+        SceneManager.LoadScene(levelName);
+    }
     
     private static void resetGameInfo()
     {
         isGameOver = false;
+        isGameWon = false;
         isGamePaused = false;
         Time.timeScale = 1f;
         score = 0;
@@ -53,6 +67,12 @@ public static class GameUtils
     {
         isGameOver = true;
         SoundManager.PlayGameOverSound();
+    }
+
+    public static void GameWon()
+    {
+        isGameWon = true;
+        SoundManager.PlayGameWonSound();
     }
 
     public static int GetScore()

@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Arena1.unity
     guid: 7ded7ec3b6abe9046a5d076ed6ebc4ef
+  - enabled: 1
+    path: Assets/Scenes/SeededArena.unity
+    guid: 89155f032a7630045ba624aa44d926eb
   m_configObjects: {}

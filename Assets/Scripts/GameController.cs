@@ -47,9 +47,12 @@ public class GameController : MonoBehaviour
     public List<GameObject> prefabsList;
     [Range(0, 100)]
     public int density;
-    public int maxObjectAttempts;
-    public float maxPositionY;
     public float maxPositionX;
+    public float maxPositionY;
+    public float offsetX;
+    public float offsetY;
+    public float minScale;
+    public float maxScale;
 
 
     private Rigidbody2D playerRigidBody;
@@ -78,7 +81,7 @@ public class GameController : MonoBehaviour
         backgroundSpRenderer = background.GetComponent<SpriteRenderer>();
         playerSpRenderer = playerGameObject.GetComponent<SpriteRenderer>();
 
-        if (GameUtils.IsRandomArena() && maxObjectAttempts != 0)
+        if (GameUtils.IsRandomArena())
         {
             GenerateMap();
         }
@@ -133,25 +136,49 @@ public class GameController : MonoBehaviour
 
     public static void GenerateMap()
     {
-        if(instance.seedOrRandomIfEmpty == null || instance.seedOrRandomIfEmpty.Trim().Equals(""))
+        if(GameUtils.GetCurrentSeed() != null)
         {
-            Debug.Log("Empty string, random seeding.");
+            instance.seedOrRandomIfEmpty = GameUtils.GetCurrentSeed();
+        }
+        if (IsSeedEmpty())
+        {
             instance.seedOrRandomIfEmpty = Time.time.ToString();
         }
+        GameUtils.SetCurrentSeed(instance.seedOrRandomIfEmpty);
         System.Random pseudoRandom = new System.Random(instance.seedOrRandomIfEmpty.GetHashCode());
         
-        for(int i = 0; i < instance.maxObjectAttempts; i++)
+        for(float x = -instance.maxPositionX; x < instance.maxPositionX; x++)
         {
-            if (pseudoRandom.Next(0, 100) <= instance.density)
+            for (float y = -instance.maxPositionY; y < instance.maxPositionY; y++)
             {
-                GameObject randomPrefab = instance.prefabsList[Random.Range(0, instance.prefabsList.Count)];
-                randomPrefab = Instantiate(randomPrefab);
-                Debug.Log("Instantiating : " + randomPrefab.name);
-                float positionX = Mathf.Clamp((float)pseudoRandom.NextDouble() - 0.5f, -0.5f, 0.5f) * instance.maxPositionX;
-                float positionY = Mathf.Clamp((float)pseudoRandom.NextDouble() - 0.5f, -0.5f, 0.5f) * instance.maxPositionY;
-                randomPrefab.transform.position = new Vector3(positionX, positionY, 0);
-
+                if (!isInOffsetZone(x,y) && pseudoRandom.Next(0, 100) <= instance.density)
+                {
+                    GameObject randomPrefab = instance.prefabsList[pseudoRandom.Next(0, instance.prefabsList.Count)];
+                    randomPrefab = Instantiate(randomPrefab);
+                    randomPrefab.transform.position = new Vector3(x, y, 0);
+                    float rotationZ = getNextRandomBetween(pseudoRandom, -1f, 1f) * 360;
+                    randomPrefab.transform.Rotate(new Vector3(0, 0, rotationZ));
+                    // Updates local scales, but distors the sprite!
+                    //float scaleX = getNextRandomBetween(pseudoRandom, instance.minScale, instance.maxScale);
+                    //float scaleY = getNextRandomBetween(pseudoRandom, instance.minScale, instance.maxScale);
+                    //randomPrefab.transform.localScale = new Vector3(scaleX, scaleY, 1);
+                }
             }
         }
+    }
+    
+    private static bool IsSeedEmpty()
+    {
+        return (instance.seedOrRandomIfEmpty == null || instance.seedOrRandomIfEmpty.Trim().Equals(""));
+    }
+
+    private static float getNextRandomBetween(System.Random pseudoRand, float minusValue, float maxValue) {
+        return Mathf.Lerp(minusValue, maxValue, (float)pseudoRand.Next(0, 100) / 100); ;
+    }
+
+    private static bool isInOffsetZone(float x, float y)
+    {
+        return x < -instance.maxPositionX + instance.offsetX &&
+            y > instance.maxPositionY - instance.offsetY;
     }
 }

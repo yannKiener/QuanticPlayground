@@ -10,6 +10,7 @@ public static class GameUtils
     private static float elapsedTime = 0;
     private static bool isGameOver = false;
     private static bool isGamePaused = false;
+    private static string currentSeed;
 
     public static bool IsPlayerinQuantumMode()
     {
@@ -28,19 +29,24 @@ public static class GameUtils
 
     public static void ReStartGame()
     {
-        Debug.Log("restarting Game");
-        isGameOver = false;
-        score = 0;
-        elapsedTime = 0;
+        resetGameInfo();
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public static void StartRandomGame()
     {
+        resetGameInfo();
+        currentSeed = null;
+        SceneManager.LoadScene("SeededArena");
+    }
+    
+    private static void resetGameInfo()
+    {
         isGameOver = false;
+        isGamePaused = false;
+        Time.timeScale = 1f;
         score = 0;
         elapsedTime = 0;
-        SceneManager.LoadScene("SeededArena");
     }
 
     public static void GameOver()
@@ -82,5 +88,14 @@ public static class GameUtils
     public static bool IsRandomArena()
     {
         return "SeededArena".Equals(SceneManager.GetActiveScene().name);
+    }
+    
+    public static void SetCurrentSeed(string seed)
+    {
+        currentSeed = seed;
+    }
+    public static string GetCurrentSeed()
+    {
+        return currentSeed;
     }
 }

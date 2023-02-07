@@ -13,8 +13,8 @@ public class WallBehaviour : MonoBehaviour
     public bool isQuantumKiller;
     public bool isQuantumBreakable;
 
-    public bool isBasicCollider;
-    public bool isQuantumCollider;
+    public bool isBasicGhostly;
+    public bool isQuantumGhostly;
 
     void OnCollisionEnter2D(Collision2D col)
     {
@@ -33,7 +33,7 @@ public class WallBehaviour : MonoBehaviour
                     Destroy(gameObject, destroyDelay);
                 }
 
-                if (isQuantumCollider)
+                if (isQuantumGhostly)
                 {
                     Debug.Log("You will go trough some other day.");
                 }
@@ -51,7 +51,7 @@ public class WallBehaviour : MonoBehaviour
                     Destroy(gameObject, destroyDelay);
                 }
 
-                if (isBasicCollider)
+                if (isBasicGhostly)
                 {
                     Debug.Log("You will go trough some other day.");
                 }

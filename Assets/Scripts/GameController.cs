@@ -7,6 +7,8 @@ public class GameController : MonoBehaviour
 {
     [Header("General Balance")]
     public float scoreSpeedMultiplier;
+    [Range(0.0f, 1f)]
+    public float hideWallAlpha;
 
     [Header("GameObjects instances")]
     public GameObject background;

@@ -196,7 +196,7 @@ public class WallBehaviour : MonoBehaviour
         foreach(SpriteRenderer sp in spriteRenderers)
         {
             Color tmpCol = sp.color;
-            tmpCol.a = 0f;
+            tmpCol.a = GameController.getInstance().hideWallAlpha;
             sp.color = tmpCol;
         }
 

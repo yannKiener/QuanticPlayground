@@ -531,8 +531,8 @@ MonoBehaviour:
   isBasicBreakable: 0
   isQuantumKiller: 0
   isQuantumBreakable: 0
-  isBasicCollider: 0
-  isQuantumCollider: 0
+  isBasicGhostly: 0
+  isQuantumGhostly: 0
 --- !u!1 &231215031
 GameObject:
   m_ObjectHideFlags: 0
@@ -847,8 +847,8 @@ MonoBehaviour:
   isBasicBreakable: 0
   isQuantumKiller: 0
   isQuantumBreakable: 0
-  isBasicCollider: 0
-  isQuantumCollider: 0
+  isBasicGhostly: 0
+  isQuantumGhostly: 0
 --- !u!1 &408265073
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,8 +1251,8 @@ MonoBehaviour:
   isBasicBreakable: 0
   isQuantumKiller: 1
   isQuantumBreakable: 0
-  isBasicCollider: 0
-  isQuantumCollider: 0
+  isBasicGhostly: 0
+  isQuantumGhostly: 0
 --- !u!212 &557179908
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1635,8 +1635,8 @@ MonoBehaviour:
   isBasicBreakable: 0
   isQuantumKiller: 1
   isQuantumBreakable: 0
-  isBasicCollider: 0
-  isQuantumCollider: 0
+  isBasicGhostly: 0
+  isQuantumGhostly: 0
 --- !u!61 &1014636415
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2130,7 +2130,7 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
@@ -2414,8 +2414,8 @@ MonoBehaviour:
   isBasicBreakable: 1
   isQuantumKiller: 0
   isQuantumBreakable: 0
-  isBasicCollider: 0
-  isQuantumCollider: 0
+  isBasicGhostly: 0
+  isQuantumGhostly: 0
 --- !u!61 &1531635713
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2772,8 +2772,8 @@ MonoBehaviour:
   isBasicBreakable: 0
   isQuantumKiller: 0
   isQuantumBreakable: 1
-  isBasicCollider: 0
-  isQuantumCollider: 0
+  isBasicGhostly: 0
+  isQuantumGhostly: 0
 --- !u!61 &1763883590
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -54,4 +54,15 @@ public class MusicManager : MonoBehaviour
             instance.audioSource.Play();
         }
     }
+
+    public static void SwitchMusic(bool isOn)
+    {
+        if (isOn)
+        {
+            instance.audioSource.volume = 1;
+        } else
+        {
+            instance.audioSource.volume = 0;
+        }
+    }
 }

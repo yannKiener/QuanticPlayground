@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public float scoreSpeedMultiplier;
     public string scorePreText;
     public GameObject scoreTextGameObject;
+    public GameObject gameOverGameObject;
 
     private Rigidbody2D playerRigidBody;
     private float playerSpeed;
@@ -20,6 +21,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        gameOverGameObject.SetActive(false);
         playerRigidBody = playerGameObject.GetComponent<Rigidbody2D>();
         scoreText = scoreTextGameObject.GetComponent<Text>();
     }
@@ -32,7 +34,9 @@ public class GameController : MonoBehaviour
             playerSpeed = playerRigidBody.velocity.magnitude;
             GameUtils.AddScore(Time.deltaTime * playerSpeed * playerSpeed * playerSpeed * scoreSpeedMultiplier);
             scoreText.text = scorePreText + GameUtils.GetScore();
+        } else
+        {
+            gameOverGameObject.SetActive(true);
         }
-
     }
 }

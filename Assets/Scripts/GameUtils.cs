@@ -7,6 +7,7 @@ public static class GameUtils
 {
     private static bool isPlayerQuantum = false;
     private static float score = 0;
+    private static float elapsedTime = 0;
     private static bool isGameOver = false;
     private static bool isGamePaused = false;
 
@@ -29,6 +30,7 @@ public static class GameUtils
     {
         isGameOver = false;
         score = 0;
+        elapsedTime = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
@@ -56,5 +58,15 @@ public static class GameUtils
     public static bool IsGamePaused()
     {
         return isGamePaused;
+    }
+
+    public static void AddTime(float timeToAdd)
+    {
+        elapsedTime += timeToAdd;
+    }
+
+    public static float GetElapsedTime()
+    {
+        return elapsedTime;
     }
 }

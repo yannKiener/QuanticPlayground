@@ -47,6 +47,9 @@ MonoBehaviour:
   scoreSpeedMultiplier: 0.1
   hideWallAlpha: 0.115
   startGameDelay: 1
+  startGameDelayAfterFadeOut: 0.5
+  transitionScreen: {fileID: 1339142338136418641, guid: f936ddb53dc4b984282005e13fed25f5,
+    type: 3}
   basicBackgroundColor: {r: 0.754717, g: 0.66571736, b: 0.66571736, a: 1}
   quantumBackgroundColor: {r: 0.41960785, g: 0.13333334, b: 0.38039216, a: 1}
   playerBasicColor: {r: 0.972549, g: 0.88107514, b: 0.02352939, a: 1}

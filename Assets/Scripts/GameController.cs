@@ -11,6 +11,8 @@ public class GameController : MonoBehaviour
     [Range(0.0f, 1f)]
     public float hideWallAlpha;
     public float startGameDelay;
+    public float startGameDelayAfterFadeOut;
+    public GameObject transitionScreen;
 
     [Header("BackGround and player colors")]
     public Color basicBackgroundColor;
@@ -69,6 +71,9 @@ public class GameController : MonoBehaviour
     private Text tutorialTimeText;
     private SpriteRenderer backgroundSpRenderer;
     private SpriteRenderer playerSpRenderer;
+    private SpriteRenderer transitionScreenSpRenderer;
+    private SpriteRenderer transitionScreenTitle;
+    private SpriteRenderer transitionScreenLogo;
 
     private static GameController instance;
 
@@ -92,12 +97,19 @@ public class GameController : MonoBehaviour
         tutorialWonScreen.SetActive(false);
         backgroundSpRenderer = background.GetComponent<SpriteRenderer>();
         playerSpRenderer = playerGameObject.GetComponent<SpriteRenderer>();
+        GameObject transitionGO = Instantiate(transitionScreen);
+        transitionScreenSpRenderer = transitionGO.GetComponent<SpriteRenderer>();
+        transitionScreenTitle = transitionGO.transform.GetChild(0).GetComponent<SpriteRenderer>();
+        transitionScreenLogo = transitionGO.transform.GetChild(1).GetComponent<SpriteRenderer>(); 
 
         if (GameUtils.IsRandomPlayground())
         {
             GenerateMap();
         }
-        StartCoroutine(UnlockTimeAfterDelay(startGameDelay));
+        StartCoroutine(UnlockTimeAfterDelay(startGameDelay + startGameDelayAfterFadeOut));
+        StartCoroutine(FadeOutAlphaOverTime(transitionScreenSpRenderer, startGameDelay));
+        StartCoroutine(FadeOutAlphaOverTime(transitionScreenTitle, startGameDelay));
+        StartCoroutine(FadeOutAlphaOverTime(transitionScreenLogo, startGameDelay));
         GameUtils.PauseGame(true);
         Time.timeScale = 0f;
     }
@@ -216,5 +228,21 @@ public class GameController : MonoBehaviour
         yield return new WaitForSecondsRealtime(time);
         Time.timeScale = 1f;
         GameUtils.PauseGame(false);
+    }
+
+    IEnumerator FadeOutAlphaOverTime(SpriteRenderer sprite, float duration)
+    {
+        Color startColor = sprite.color;
+        Color endColor = startColor;
+        endColor.a = 0f;
+        Color currentColor;
+        for (float t = 0f; t < duration; t += Time.unscaledDeltaTime)
+        {
+            float normalizedTime = t / duration;
+            currentColor = Color.Lerp(startColor, endColor, normalizedTime);
+            sprite.color = currentColor;
+            yield return null;
+        }
+        sprite.color = endColor;
     }
 }

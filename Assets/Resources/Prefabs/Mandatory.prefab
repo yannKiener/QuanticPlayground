@@ -36,7 +36,7 @@ RectTransform:
   - {fileID: 4029854892699276151}
   - {fileID: 1912707378581897207}
   - {fileID: 7222148616716210768}
-  m_Father: {fileID: 4889919474758861235}
+  m_Father: {fileID: 5571344817821570391}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -110,7 +110,7 @@ RectTransform:
   m_Children:
   - {fileID: 7750957335597778171}
   - {fileID: 6936407406863623694}
-  m_Father: {fileID: 4889919474758861235}
+  m_Father: {fileID: 5571344817821570391}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -824,7 +824,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013865650668284552}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.942698, y: 0.1265726, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 120, y: 65, z: 1}
   m_Children:
   - {fileID: 2013865651746724107}
@@ -833,7 +833,7 @@ Transform:
   - {fileID: 2013865650422502117}
   - {fileID: 3874219659228596906}
   m_Father: {fileID: 4889919474689735842}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2013865650668284559
 SpriteRenderer:
@@ -2241,7 +2241,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4889919474689735842}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4889919473919787033
 MonoBehaviour:
@@ -2474,53 +2474,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a137e45a012529b438b4d14eaa9d953c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &4889919474247902885
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 4889919474247902907}
-  - component: {fileID: 4889919474247902884}
-  m_Layer: 0
-  m_Name: TutorialController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &4889919474247902907
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4889919474247902885}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.891292, y: 0.0714335, z: -5.903428}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 4889919474689735842}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4889919474247902884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4889919474247902885}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 134e7eb28a4679540b2668da4d9e51cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  objectivesToShatter:
-  - {fileID: 0}
-  nextSceneName: RandomPlayground
-  player: {fileID: 4889919474521014879}
 --- !u!1 &4889919474256435435
 GameObject:
   m_ObjectHideFlags: 0
@@ -3039,7 +2992,6 @@ Transform:
   - {fileID: 4889919474521014876}
   - {fileID: 4889919475344091163}
   - {fileID: 4889919474863160311}
-  - {fileID: 4889919474247902907}
   - {fileID: 4889919475548190092}
   - {fileID: 4889919473919787032}
   - {fileID: 8593927840845746657}
@@ -3196,7 +3148,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4889919474758861235}
   - component: {fileID: 4889919474758861233}
-  - component: {fileID: 2038132844159275981}
   m_Layer: 5
   m_Name: GameOverScreen
   m_TagString: Untagged
@@ -3216,8 +3167,6 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4889919475583236869}
-  - {fileID: 6841906222794660310}
-  - {fileID: 9186399806354878175}
   m_Father: {fileID: 4889919474778285795}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3234,22 +3183,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4889919474758861244}
   m_CullTransparentMesh: 0
---- !u!114 &2038132844159275981
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4889919474758861244}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d046a616286dc624abe9b312f589899c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  positions: {fileID: 1621983339706549365}
-  seeds: {fileID: 1396463422112894834}
-  scores: {fileID: 7700747307826440342}
-  ggPanel: {fileID: 981088258951853814}
 --- !u!1 &4889919474773781358
 GameObject:
   m_ObjectHideFlags: 0
@@ -3412,7 +3345,7 @@ RectTransform:
   - {fileID: 4889919474758861235}
   - {fileID: 5571344817821570391}
   m_Father: {fileID: 4889919474689735842}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -3746,6 +3679,7 @@ MonoBehaviour:
   startGameDelayAfterFadeOut: 0.5
   transitionScreen: {fileID: 1339142338136418641, guid: f936ddb53dc4b984282005e13fed25f5,
     type: 3}
+  nextSceneName: 
   basicBackgroundColor: {r: 0.754717, g: 0.66571736, b: 0.66571736, a: 1}
   quantumBackgroundColor: {r: 0.41960785, g: 0.13333334, b: 0.38039216, a: 1}
   playerBasicColor: {r: 0.972549, g: 0.88107514, b: 0.02352939, a: 1}
@@ -3802,6 +3736,7 @@ MonoBehaviour:
   timeTextGameObject: {fileID: 4889919474053165154}
   RandomLevelGameOverButton: {fileID: 9108216938481967839}
   RandomLevelMenuButton: {fileID: 6312751249110171332}
+  objectivesToBreak: []
 --- !u!1 &4889919475159611684
 GameObject:
   m_ObjectHideFlags: 0
@@ -3982,7 +3917,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4889919475311828319}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -1.9426984, y: 0.12657258, z: -15.786241}
+  m_LocalPosition: {x: 0, y: 0, z: -15.786241}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4889919474689735842}
@@ -4242,7 +4177,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4889919474689735842}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &4889919475548190093
 MonoBehaviour:
@@ -5088,7 +5023,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4889919474247902884}
+      - m_Target: {fileID: 4889919474863160310}
         m_MethodName: StartScene
         m_Mode: 1
         m_Arguments:
@@ -5617,6 +5552,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5571344817821570391}
   - component: {fileID: 5571344817821570390}
+  - component: {fileID: 4519036036823038496}
   m_Layer: 5
   m_Name: TutorialWonScreen
   m_TagString: Untagged
@@ -5636,6 +5572,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5571344817449321959}
+  - {fileID: 6841906222794660310}
+  - {fileID: 9186399806354878175}
   m_Father: {fileID: 4889919474778285795}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5652,6 +5590,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5571344817821570392}
   m_CullTransparentMesh: 0
+--- !u!114 &4519036036823038496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5571344817821570392}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d046a616286dc624abe9b312f589899c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  positions: {fileID: 1621983339706549365}
+  seeds: {fileID: 1396463422112894834}
+  scores: {fileID: 7700747307826440342}
+  ggPanel: {fileID: 981088258951853814}
 --- !u!1 &5571344818002147144
 GameObject:
   m_ObjectHideFlags: 0
@@ -6823,7 +6777,7 @@ Transform:
   m_LocalScale: {x: 0.1, y: 0.1, z: 1}
   m_Children: []
   m_Father: {fileID: 4889919474689735842}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &8593927840845746658
 SpriteRenderer:

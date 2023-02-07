@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ public class GameController : MonoBehaviour
     public float startGameDelay;
     public float startGameDelayAfterFadeOut;
     public GameObject transitionScreen;
+    public string nextSceneName;
 
     [Header("BackGround and player colors")]
     public Color basicBackgroundColor;
@@ -73,6 +75,7 @@ public class GameController : MonoBehaviour
     private SpriteRenderer transitionScreenTitle;
     private SpriteRenderer transitionScreenLogo;
     private SpriteRenderer credits;
+    public GameObject[] objectivesToBreak;
 
     private static GameController instance;
 
@@ -96,16 +99,26 @@ public class GameController : MonoBehaviour
         tutorialWonScreen.SetActive(false);
         backgroundSpRenderer = background.GetComponent<SpriteRenderer>();
         playerSpRenderer = playerGameObject.GetComponent<SpriteRenderer>();
+
+        if (GameUtils.IsRandomPlayground())
+        {
+            GenerateMap();
+        }
+
+        objectivesToBreak = GameObject.FindGameObjectsWithTag("breakable");
+
+        HandleTransitionEffect();
+    }
+
+    private void HandleTransitionEffect()
+    {
+        //Transition Screen effects 
         GameObject transitionGO = Instantiate(transitionScreen);
         transitionScreenSpRenderer = transitionGO.GetComponent<SpriteRenderer>();
         transitionScreenTitle = transitionGO.transform.GetChild(0).GetComponent<SpriteRenderer>();
         transitionScreenLogo = transitionGO.transform.GetChild(1).GetComponent<SpriteRenderer>();
         credits = transitionGO.transform.GetChild(2).GetComponent<SpriteRenderer>();
 
-        if (GameUtils.IsRandomPlayground())
-        {
-            GenerateMap();
-        }
         StartCoroutine(UnlockTimeAfterDelay(startGameDelay + startGameDelayAfterFadeOut));
         StartCoroutine(FadeOutAlphaOverTime(transitionScreenSpRenderer, startGameDelay));
         StartCoroutine(FadeOutAlphaOverTime(transitionScreenTitle, startGameDelay));
@@ -118,6 +131,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        HandleGameWinCondition();
         if (!GameUtils.IsGameOver() && !GameUtils.IsGameWon())
         {
             if(playerRigidBody != null)
@@ -143,6 +157,21 @@ public class GameController : MonoBehaviour
             {
                 gameOverScreen.SetActive(true);
             }
+        }
+    }
+
+    // Usable for next level button
+    public void StartScene()
+    {
+        GameUtils.StartScene(nextSceneName);
+    }
+
+    private void HandleGameWinCondition()
+    {
+        if (Array.FindAll(objectivesToBreak, (GameObject go) => go != null).Length == 0 && !GameUtils.IsGamePaused() && !GameUtils.IsGameWon() && GameUtils.GetElapsedTime() > 1f)
+        {
+            DestroyImmediate(playerGameObject);
+            GameUtils.GameWon();
         }
     }
 
@@ -179,9 +208,9 @@ public class GameController : MonoBehaviour
         GameUtils.SetCurrentSeed(generationSeed);
         System.Random pseudoRandom = new System.Random(generationSeed.GetHashCode());
         
-        for(float x = -instance.maxPositionX; x < instance.maxPositionX; x++)
+        for(float x = -instance.maxPositionX; x <= instance.maxPositionX; x++)
         {
-            for (float y = -instance.maxPositionY; y < instance.maxPositionY; y++)
+            for (float y = -instance.maxPositionY; y <= instance.maxPositionY; y++)
             {
                 if (!isInOffsetZone(x,y) && pseudoRandom.Next(0, 100) <= instance.density)
                 {

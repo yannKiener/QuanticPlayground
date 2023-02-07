@@ -26,8 +26,8 @@ public class HighScoresDisplayController : MonoBehaviour
 
     private void OnEnable()
     {
-        Score currentScore = new Score(GameUtils.GetCurrentSeed(), GameUtils.GetScore());
-        if (!GameController.getInstance().isTutorial)
+        Score currentScore = new Score(GameUtils.GetCurrentSeed(), GameUtils.GetElapsedTime());
+        if (GameController.getInstance().isTutorial)
         {
             GameUtils.SaveScore(currentScore);
         }
@@ -41,7 +41,7 @@ public class HighScoresDisplayController : MonoBehaviour
         {
             positionString += kv.Key + "\r\n";
             seedString += kv.Value.GetSeedName() + "\r\n";
-            scoreString += kv.Value.GetCount() + "\r\n";
+            scoreString += kv.Value.GetTime().ToString("0.00") + "s\r\n";
         }
 
         scoreText.text = scoreString;
@@ -51,7 +51,7 @@ public class HighScoresDisplayController : MonoBehaviour
 
     private bool IsBestScore(int curScore)
     {
-        return GameUtils.GetHighScores().GetDictionary()[1].GetCount() == curScore;
+        return GameUtils.GetHighScores().GetDictionary()[1].GetTime() == curScore;
     }
 
     // Update is called once per frame

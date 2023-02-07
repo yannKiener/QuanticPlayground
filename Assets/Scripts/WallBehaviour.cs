@@ -20,6 +20,14 @@ public class WallBehaviour : MonoBehaviour
     private bool isBasicKillerOnly = false;
 
 
+    private void Awake()
+    {
+        if ((isQuantumBreakable || isBasicBreakable) && !isQuantumKiller && !isBasicKiller)
+        {
+            tag = "breakable";
+        }
+    }
+
     private void Start()
     {
         SetSpriteRenderers();

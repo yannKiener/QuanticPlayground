@@ -29,12 +29,10 @@ public class InGameSoundOnOff : MonoBehaviour
         if (isSoundOn)
         {
             image.sprite = soundOnSprite;
-            Debug.Log("SoundOnSprite");
         }
         else
         {
             image.sprite = soundOffSprite;
-            Debug.Log("SoundOffSprite");
         }
         MusicManager.SwitchMusic(isSoundOn);
 

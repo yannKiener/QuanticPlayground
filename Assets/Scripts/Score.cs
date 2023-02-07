@@ -6,17 +6,17 @@ using UnityEngine;
 public class Score
 {
     string seed;
-    int count;
+    float time;
 
-    public Score(string name, int count)
+    public Score(string name, float elapsedTime)
     {
         this.seed = name;
-        this.count = count;
+        this.time = elapsedTime;
     }
 
-    public int GetCount()
+    public float GetTime()
     {
-        return count;
+        return time;
     }
 
     public string GetSeedName()

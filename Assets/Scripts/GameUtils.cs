@@ -129,6 +129,10 @@ public static class GameUtils
     }
     public static string GetCurrentSeed()
     {
+        if(currentSeed == null && GameController.getInstance().isTutorial)
+        {
+            return SceneManager.GetActiveScene().name;
+        } 
         return currentSeed;
     }
 
@@ -169,9 +173,9 @@ public static class GameUtils
         {
             Debug.Log("Save file " + highScoreFilePath + " not found. Creating fake highscores.");
             Dictionary<int, Score> highScoreList = new Dictionary<int, Score>();
-            highScoreList.Add(1, new Score("N1C3 533d", 1337));
-            highScoreList.Add(2, new Score("Seed", 512));
-            highScoreList.Add(3, new Score("Well.", 42));
+            highScoreList.Add(1, new Score("Tutorial 1", 13.37f));
+            highScoreList.Add(2, new Score("Tutorial 2", 42f));
+            highScoreList.Add(3, new Score("RandomSeed", 125.12f));
 
             scoreList = new HighScores(highScoreList); 
         }

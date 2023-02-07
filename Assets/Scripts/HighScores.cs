@@ -24,7 +24,7 @@ public class HighScores
         foreach (KeyValuePair<int, Score> kv in highScores)
         {
             i++;
-            if (kv.Value.GetCount() < score.GetCount())
+            if (kv.Value.GetTime() > score.GetTime())
             {
                 //Debug.Log("Pushing score at position : " + kv.Key);
                 pushScore(kv.Key, score);
@@ -39,7 +39,7 @@ public class HighScores
         }
     }
 
-    //Used to "push down" lower existing scores
+    //Used to "push down" : lower position of existing scores
     private void pushScore(int position, Score score)
     {
         if (position < scoreCountLimit)

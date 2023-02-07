@@ -13,9 +13,6 @@ public class WallBehaviour : MonoBehaviour
     public bool isQuantumKiller;
     public bool isQuantumBreakable;
 
-    public bool isBasicGhostly;
-    public bool isQuantumGhostly;
-
     private List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
     private List<Collider2D> colliders = new List<Collider2D>();
     private bool isQuantumKillerOnly = false;
@@ -59,16 +56,6 @@ public class WallBehaviour : MonoBehaviour
         if (isBasicKiller && isQuantumKiller)
         {
             SetColors(GameController.getInstance().alwaysKillerWallColor);
-        }
-
-        if (isQuantumGhostly)
-        {
-            SetColors(GameController.getInstance().quantumGhostWallColor);
-        }
-
-        if (isBasicGhostly)
-        {
-            SetColors(GameController.getInstance().basicGhostWallColor);
         }
     }
 
@@ -145,11 +132,6 @@ public class WallBehaviour : MonoBehaviour
                     Destroy(gameObject, destroyDelay);
                     SoundManager.PlayBreakSound();
                 }
-
-                if (isQuantumGhostly)
-                {
-                    Debug.Log("You will go trough some other day.");
-                }
             }
             else
             {
@@ -163,10 +145,6 @@ public class WallBehaviour : MonoBehaviour
                 {
                     Destroy(gameObject, destroyDelay);
                     SoundManager.PlayBreakSound();
-                }
-                if (isBasicGhostly)
-                {
-                    Debug.Log("You will go trough some other day.");
                 }
             }
             if (enterCollision)

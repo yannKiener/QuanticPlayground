@@ -10,6 +10,7 @@ public class GameController : MonoBehaviour
     public float scoreSpeedMultiplier;
     [Range(0.0f, 1f)]
     public float hideWallAlpha;
+    public float startGameDelay;
 
     [Header("BackGround and player colors")]
     public Color basicBackgroundColor;
@@ -94,6 +95,10 @@ public class GameController : MonoBehaviour
         {
             GenerateMap();
         }
+        StartCoroutine(UnlockTimeAfterDelay(startGameDelay));
+        GameUtils.PauseGame(true);
+        Time.timeScale = 0f;
+
     }
 
     // Update is called once per frame
@@ -201,5 +206,12 @@ public class GameController : MonoBehaviour
     {
         return x < -instance.maxPositionX + instance.offsetX &&
             y > instance.maxPositionY - instance.offsetY;
+    }
+
+    IEnumerator UnlockTimeAfterDelay(float time)
+    {
+        yield return new WaitForSecondsRealtime(time);
+        Time.timeScale = 1f;
+        GameUtils.PauseGame(false);
     }
 }

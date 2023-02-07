@@ -30,7 +30,9 @@ public class InGameMenu : MonoBehaviour
     void Update()
     {
         IngameMenu.SetActive(isMenuActivated);
-        if (Input.GetKeyDown(KeyCode.Escape))
+
+        //Elapsed time to avoid menu while pre-game
+        if (Input.GetKeyDown(KeyCode.Escape) && GameUtils.GetElapsedTime() > 0.1f)
         {
             SwitchMenuActivation();
         }

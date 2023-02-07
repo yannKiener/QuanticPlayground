@@ -43,17 +43,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33620eb6161a8984ab3a3c28e653c7a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isTutorial: 0
   scoreSpeedMultiplier: 0.1
   hideWallAlpha: 0.115
-  background: {fileID: 0}
-  playerGameObject: {fileID: 0}
-  gameOverGameObject: {fileID: 0}
-  gameOverScoreTextGameObject: {fileID: 0}
-  scoreTextGameObject: {fileID: 0}
-  scorePreText: 'Score : '
-  gameOverTimeTextGameObject: {fileID: 0}
-  timeTextGameObject: {fileID: 0}
-  timerPreText: 'Time :'
+  startGameDelay: 1
   basicBackgroundColor: {r: 0.754717, g: 0.66571736, b: 0.66571736, a: 1}
   quantumBackgroundColor: {r: 0.41960785, g: 0.13333334, b: 0.38039216, a: 1}
   playerBasicColor: {r: 0.54509807, g: 0.023529412, b: 0.972549, a: 1}
@@ -72,6 +65,20 @@ MonoBehaviour:
   seedOrRandomIfEmpty: 
   prefabsList: []
   density: 0
-  maxObjectAttempts: 0
-  maxPositionY: 8.5
   maxPositionX: 4.5
+  maxPositionY: 8.5
+  offsetX: 0
+  offsetY: 0
+  minScale: 0
+  maxScale: 0
+  background: {fileID: 0}
+  playerGameObject: {fileID: 0}
+  gameOverScreen: {fileID: 0}
+  gameOverScoreNumberGameObject: {fileID: 0}
+  gameOverTimeNumberGameObject: {fileID: 0}
+  tutorialWonScreen: {fileID: 0}
+  tutorialTimeNumberGameObject: {fileID: 0}
+  scorePreText: 'Score : '
+  scoreTextGameObject: {fileID: 0}
+  timerPreText: 'Time :'
+  timeTextGameObject: {fileID: 0}

@@ -56,12 +56,12 @@ public class WallBehaviour : MonoBehaviour
 
         if (isQuantumGhostly)
         {
-            //todo 
+            SetColors(GameController.getInstance().quantumGhostWallColor);
         }
 
         if (isBasicGhostly)
         {
-            //todo 
+            SetColors(GameController.getInstance().basicGhostWallColor);
         }
     }
 

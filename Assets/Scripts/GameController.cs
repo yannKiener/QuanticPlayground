@@ -20,6 +20,8 @@ public class GameController : MonoBehaviour
     public Color basicKillerWallColor;
     public Color quantumKillerWallColor;
     public Color alwaysKillerWallColor;
+    public Color basicGhostWallColor;
+    public Color quantumGhostWallColor;
 
     private Rigidbody2D playerRigidBody;
     private float playerSpeed;

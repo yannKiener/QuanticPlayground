@@ -1618,6 +1618,8 @@ MonoBehaviour:
   basicKillerWallColor: {r: 1, g: 0, b: 0, a: 1}
   quantumKillerWallColor: {r: 0.101249695, g: 0, b: 1, a: 1}
   alwaysKillerWallColor: {r: 0.8679245, g: 0, b: 0.47322255, a: 1}
+  basicGhostWallColor: {r: 0.7075472, g: 0.7075472, b: 0.7075472, a: 1}
+  quantumGhostWallColor: {r: 0.5849056, g: 0.5849056, b: 0.5849056, a: 1}
 --- !u!1 &1426612324
 GameObject:
   m_ObjectHideFlags: 0

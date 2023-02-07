@@ -74,13 +74,17 @@ public class GameController : MonoBehaviour
     private SpriteRenderer transitionScreenSpRenderer;
     private SpriteRenderer transitionScreenTitle;
     private SpriteRenderer transitionScreenLogo;
+    private SpriteRenderer credits;
 
     private static GameController instance;
 
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
-        instance = this;
         playerRigidBody = playerGameObject.GetComponent<Rigidbody2D>();
         scoreText = scoreTextGameObject.GetComponent<Text>();
         gameOverScoreText = gameOverScoreNumberGameObject.GetComponent<Text>();
@@ -100,7 +104,8 @@ public class GameController : MonoBehaviour
         GameObject transitionGO = Instantiate(transitionScreen);
         transitionScreenSpRenderer = transitionGO.GetComponent<SpriteRenderer>();
         transitionScreenTitle = transitionGO.transform.GetChild(0).GetComponent<SpriteRenderer>();
-        transitionScreenLogo = transitionGO.transform.GetChild(1).GetComponent<SpriteRenderer>(); 
+        transitionScreenLogo = transitionGO.transform.GetChild(1).GetComponent<SpriteRenderer>();
+        credits = transitionGO.transform.GetChild(2).GetComponent<SpriteRenderer>();
 
         if (GameUtils.IsRandomPlayground())
         {
@@ -110,6 +115,7 @@ public class GameController : MonoBehaviour
         StartCoroutine(FadeOutAlphaOverTime(transitionScreenSpRenderer, startGameDelay));
         StartCoroutine(FadeOutAlphaOverTime(transitionScreenTitle, startGameDelay));
         StartCoroutine(FadeOutAlphaOverTime(transitionScreenLogo, startGameDelay));
+        StartCoroutine(FadeOutAlphaOverTime(credits, startGameDelay));
         GameUtils.PauseGame(true);
         Time.timeScale = 0f;
     }

@@ -44,6 +44,13 @@ public static class GameUtils
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
+    public static void StartGameWithSeed(string seed)
+    {
+        resetGameInfo();
+        currentSeed = seed;
+        SceneManager.LoadScene("RandomPlayground");
+    }
+
     public static void StartRandomGame()
     {
         resetGameInfo();
@@ -126,7 +133,7 @@ public static class GameUtils
     }
 
     //Saves a new HighScore
-    public static void SaveScore(int score)
+    public static void SaveScore(Score score)
     {
         highScores = LoadHighScoresFromSave();
         highScores.AddScore(score);
@@ -161,10 +168,10 @@ public static class GameUtils
         else
         {
             Debug.Log("Save file " + highScoreFilePath + " not found. Creating fake highscores.");
-            Dictionary<int, int> highScoreList = new Dictionary<int, int>();
-            highScoreList.Add(1, 1337);
-            highScoreList.Add(2, 512);
-            highScoreList.Add(3, 42);
+            Dictionary<int, Score> highScoreList = new Dictionary<int, Score>();
+            highScoreList.Add(1, new Score("N1C3 533d", 1337));
+            highScoreList.Add(2, new Score("Seed", 512));
+            highScoreList.Add(3, new Score("Well.", 42));
 
             scoreList = new HighScores(highScoreList); 
         }

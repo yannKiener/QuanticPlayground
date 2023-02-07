@@ -8,6 +8,8 @@ public class InGameMenu : MonoBehaviour
 
     public GameObject skipTutorialGameObject;
     public GameObject randomLevelGameObject;
+    public GameObject InputFieldButton;
+    public GameObject InputField;
 
 
     private bool isMenuActivated = false;
@@ -19,9 +21,13 @@ public class InGameMenu : MonoBehaviour
         {
             skipTutorialGameObject.SetActive(true);
             randomLevelGameObject.SetActive(false);
+            InputFieldButton.SetActive(false);
+            InputField.SetActive(false);
         } else
         {
             randomLevelGameObject.SetActive(true);
+            InputFieldButton.SetActive(true);
+            InputField.SetActive(true);
             skipTutorialGameObject.SetActive(false);
         }
     }

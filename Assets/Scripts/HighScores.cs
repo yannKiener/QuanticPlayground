@@ -5,20 +5,20 @@ using UnityEngine;
 [System.Serializable]
 public class HighScores
 {
-    Dictionary<int, int> highScores;
+    Dictionary<int, Score> highScores;
 
-    public HighScores(Dictionary<int, int> highScores)
+    public HighScores(Dictionary<int, Score> highScores)
     {
         this.highScores = highScores;
     }
 
-    public void AddScore(int score)
+    public void AddScore(Score score)
     {
         int i = 0;
-        foreach (KeyValuePair<int, int> kv in highScores)
+        foreach (KeyValuePair<int, Score> kv in highScores)
         {
             i++;
-            if (kv.Value < score)
+            if (kv.Value.GetCount() < score.GetCount())
             {
                 //Debug.Log("Pushing score at position : " + kv.Key);
                 pushScore(kv.Key, score);
@@ -33,19 +33,19 @@ public class HighScores
         }
     }
 
-    public Dictionary<int,int> GetDictionary()
+    public Dictionary<int, Score> GetDictionary()
     {
         return highScores;
     }
 
     //Used to "push down" lower existing scores
-    private void pushScore(int position, int score)
+    private void pushScore(int position, Score score)
     {
         if (position < 10)
         {
             if (highScores.ContainsKey(position))
             {
-                int tempScore = highScores[position];
+                Score tempScore = highScores[position];
                 highScores[position] = score;
                 pushScore(position + 1, tempScore);
             }

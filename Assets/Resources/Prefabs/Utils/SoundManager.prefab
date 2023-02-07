@@ -43,4 +43,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c451ec9c032c347b6e7749082b036b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameOverSoundEffect: {fileID: 8300000, guid: 5a1ca44e84292d646909235f187bc868, type: 3}
+  gameOverSoundEffect: {fileID: 8300000, guid: f4075bf57cc57374e8eaf08e6b025d65, type: 3}
+  gameWonSoundEffect: {fileID: 8300000, guid: 68cd519682eaaef4ca35cd11fc6f8850, type: 3}
+  bounceSoundEffect: {fileID: 8300000, guid: f257fa1ec9333a143963d5da0ab6ccf7, type: 3}
+  breakSoundEffect: {fileID: 8300000, guid: 0a1ab5331849db34bb7879bee2684ac4, type: 3}

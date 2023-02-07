@@ -7,6 +7,8 @@ public class SoundManager : MonoBehaviour
 {
     public AudioClip gameOverSoundEffect;
     public AudioClip gameWonSoundEffect;
+    public AudioClip bounceSoundEffect;
+    public AudioClip breakSoundEffect;
 
     private static GameObject thisGameObject;
     private static SoundManager instance;
@@ -90,6 +92,16 @@ public class SoundManager : MonoBehaviour
     {
         StopAll();
         PlaySound(instance.gameWonSoundEffect);
+    }
+
+    public static void PlayBreakSound()
+    {
+        PlaySound(instance.breakSoundEffect);
+    }
+
+    public static void PlayBounceSound()
+    {
+        PlaySound(instance.bounceSoundEffect);
     }
 
     private static AudioClip GetRandomClip(List<AudioClip> audioClips)

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4323762334586328050}
   - component: {fileID: 4323762334586328051}
   - component: {fileID: 4323762334586328049}
+  - component: {fileID: 3277624333535009093}
   m_Layer: 0
   m_Name: CircularBackGround
   m_TagString: Untagged
@@ -173,3 +174,21 @@ PolygonCollider2D:
       - {x: -0.17402169, y: -1.9867191}
       - {x: -0.37128794, y: -1.9632342}
       - {x: -0.6368136, y: -1.8974478}
+--- !u!114 &3277624333535009093
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4323762334586328060}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81aa34ccbc9312240ae55091785c8585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBasicKiller: 0
+  isBasicBreakable: 0
+  isQuantumKiller: 0
+  isQuantumBreakable: 0
+  isBasicGhostly: 0
+  isQuantumGhostly: 0

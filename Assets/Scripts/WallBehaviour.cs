@@ -120,16 +120,15 @@ public class WallBehaviour : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D col)
     {
-        handleCollision(col);
+        handleCollision(col, false);
     }
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        handleCollision(col);
-
+        handleCollision(col, true);
     }
 
-    private void handleCollision(Collision2D col)
+    private void handleCollision(Collision2D col, bool enterCollision)
     {
         if (col.gameObject.name == "Player")
         {
@@ -144,13 +143,13 @@ public class WallBehaviour : MonoBehaviour
                 if (isQuantumBreakable)
                 {
                     Destroy(gameObject, destroyDelay);
+                    SoundManager.PlayBreakSound();
                 }
 
                 if (isQuantumGhostly)
                 {
                     Debug.Log("You will go trough some other day.");
                 }
-
             }
             else
             {
@@ -163,14 +162,23 @@ public class WallBehaviour : MonoBehaviour
                 if (isBasicBreakable)
                 {
                     Destroy(gameObject, destroyDelay);
+                    SoundManager.PlayBreakSound();
                 }
                 if (isBasicGhostly)
                 {
                     Debug.Log("You will go trough some other day.");
                 }
             }
+            if (enterCollision)
+            {
+                if (!isQuantumKiller && !isBasicKiller)
+                {
+                    SoundManager.PlayBounceSound();
+                }
+            }
         }
     }
+
 
     private void Update()
     {
@@ -187,7 +195,6 @@ public class WallBehaviour : MonoBehaviour
            
         } else
         {
-
             if (isQuantumKillerOnly)
             {
                 HideGameObject();
@@ -197,8 +204,6 @@ public class WallBehaviour : MonoBehaviour
                 ShowGameObject();
             }
         }
-        
-        //Disappear if usable only on specific world
     }
 
     private void HideGameObject()

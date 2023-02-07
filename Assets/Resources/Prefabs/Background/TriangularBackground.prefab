@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7899359456851359362}
   - component: {fileID: 6117486589553100308}
+  - component: {fileID: 1001343133180670751}
   m_Layer: 0
   m_Name: TriangularBackground
   m_TagString: Untagged
@@ -141,3 +142,21 @@ PolygonCollider2D:
       - {x: -0.17086887, y: -0.3971846}
       - {x: 0.09714556, y: -0.39972663}
       - {x: 0.39768934, y: -0.4002092}
+--- !u!114 &1001343133180670751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7899359456851359361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81aa34ccbc9312240ae55091785c8585, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isBasicKiller: 0
+  isBasicBreakable: 0
+  isQuantumKiller: 0
+  isQuantumBreakable: 0
+  isBasicGhostly: 0
+  isQuantumGhostly: 0

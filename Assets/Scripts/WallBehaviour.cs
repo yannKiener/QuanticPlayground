@@ -17,10 +17,17 @@ public class WallBehaviour : MonoBehaviour
     public bool isQuantumGhostly;
 
     private List<SpriteRenderer> spriteRenderers = new List<SpriteRenderer>();
+    private List<Collider2D> colliders = new List<Collider2D>();
+    private bool isQuantumKillerOnly = false;
+    private bool isBasicKillerOnly = false;
+
 
     private void Start()
     {
         SetSpriteRenderers();
+        SetColliders();
+        isQuantumKillerOnly = isQuantumKiller && (!isBasicKiller && !isBasicBreakable);
+        isBasicKillerOnly = isBasicKiller && (!isQuantumKiller && !isQuantumBreakable);
 
         SetColors(GameController.getInstance().wallColor);
 
@@ -83,6 +90,24 @@ public class WallBehaviour : MonoBehaviour
         }
     }
 
+    private void SetColliders()
+    {
+        AddCollider(this.gameObject);
+        foreach (Transform child in transform)
+        {
+            AddCollider(child.gameObject);
+        }
+    }
+
+    private void AddCollider(GameObject go)
+    {
+        Collider2D selfCollider = go.GetComponent<Collider2D>();
+        if (selfCollider != null)
+        {
+            colliders.Add(selfCollider);
+        }
+    }
+
     private void SetColors(Color col)
     {
         foreach(SpriteRenderer sp in spriteRenderers)
@@ -93,7 +118,7 @@ public class WallBehaviour : MonoBehaviour
 
 
 
-    void OnCollisionEnter2D(Collision2D col)
+    void OnCollisionStay2D(Collision2D col)
     {
         if(col.gameObject.name == "Player")
         {
@@ -134,6 +159,65 @@ public class WallBehaviour : MonoBehaviour
                 }
             }
 
+        }
+    }
+
+    private void Update()
+    {
+        if (GameUtils.IsPlayerinQuantumMode())
+        {
+            if (isQuantumKillerOnly)
+            {
+                ShowGameObject();
+            }
+            if (isBasicKillerOnly)
+            {
+                HideGameObject();
+            }
+           
+        } else
+        {
+
+            if (isQuantumKillerOnly)
+            {
+                HideGameObject();
+            }
+            if (isBasicKillerOnly)
+            {
+                ShowGameObject();
+            }
+        }
+        
+        //Disappear if usable only on specific world
+    }
+
+    private void HideGameObject()
+    {
+        foreach(SpriteRenderer sp in spriteRenderers)
+        {
+            Color tmpCol = sp.color;
+            tmpCol.a = 0f;
+            sp.color = tmpCol;
+        }
+
+        foreach (Collider2D col in colliders)
+        {
+            col.isTrigger = true;
+        }
+    }
+
+    private void ShowGameObject()
+    {
+        foreach (SpriteRenderer sp in spriteRenderers)
+        {
+            Color tmpCol = sp.color;
+            tmpCol.a = 1f;
+            sp.color = tmpCol;
+        }
+
+        foreach (Collider2D col in colliders)
+        {
+            col.isTrigger = false;
         }
     }
 }

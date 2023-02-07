@@ -2,16 +2,21 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using System.IO;
+using System.Runtime.Serialization.Formatters.Binary;
 
-public static class GameUtils 
+public static class GameUtils
 {
+    private static string highScoreFilePath = Application.persistentDataPath + "/highscores.save";
+    private static HighScores highScores;
+
     private static bool isPlayerQuantum = false;
     private static float score = 0;
     private static float elapsedTime = 0;
     private static bool isGameOver = false;
     private static bool isGameWon = false;
     private static bool isGamePaused = false;
-    private static string currentSeed;
+    private static string currentSeed = null;
 
     public static bool IsPlayerinQuantumMode()
     {
@@ -112,11 +117,59 @@ public static class GameUtils
     
     public static void SetCurrentSeed(string seed)
     {
-        Debug.Log("Seed for this level : ");
+        Debug.Log("Seed for this level : " + seed);
         currentSeed = seed;
     }
     public static string GetCurrentSeed()
     {
         return currentSeed;
     }
+
+    //Saves a new HighScore
+    public static void SaveScore(int score)
+    {
+        highScores = LoadHighScoresFromSave();
+        highScores.AddScore(score);
+        SaveHighScores(highScores);
+    }
+
+    public static HighScores GetHighScores()
+    {
+        highScores = LoadHighScoresFromSave();
+        return highScores;
+    }
+
+    private static void SaveHighScores(HighScores highScores)
+    {
+        BinaryFormatter bf = new BinaryFormatter();
+        FileStream file = File.Create(highScoreFilePath);
+        Debug.Log("Saving highscores at : " + highScoreFilePath);
+        bf.Serialize(file, highScores);
+        file.Close();
+    }
+
+    private static HighScores LoadHighScoresFromSave()
+    {
+        HighScores scoreList = null;
+        if (File.Exists(highScoreFilePath))
+        {
+            BinaryFormatter bf = new BinaryFormatter();
+            FileStream file = File.Open(highScoreFilePath, FileMode.Open);
+            scoreList = (HighScores)bf.Deserialize(file);
+            file.Close();
+        }
+        else
+        {
+            Debug.Log("Save file " + highScoreFilePath + " not found. Creating fake highscores.");
+            Dictionary<int, int> highScoreList = new Dictionary<int, int>();
+            highScoreList.Add(1, 1337);
+            highScoreList.Add(2, 512);
+            highScoreList.Add(3, 42);
+
+            scoreList = new HighScores(highScoreList); 
+        }
+
+        return scoreList;
+    }
+
 }

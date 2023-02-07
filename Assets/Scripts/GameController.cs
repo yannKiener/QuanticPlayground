@@ -98,7 +98,6 @@ public class GameController : MonoBehaviour
         StartCoroutine(UnlockTimeAfterDelay(startGameDelay));
         GameUtils.PauseGame(true);
         Time.timeScale = 0f;
-
     }
 
     // Update is called once per frame
@@ -161,17 +160,18 @@ public class GameController : MonoBehaviour
 
     public static void GenerateMap()
     {
-        if(GameUtils.GetCurrentSeed() != null)
+        string generationSeed = instance.seedOrRandomIfEmpty;
+        if(!IsEmptyString(GameUtils.GetCurrentSeed()))
         {
-            instance.seedOrRandomIfEmpty = GameUtils.GetCurrentSeed();
+            generationSeed = GameUtils.GetCurrentSeed();
         }
-        if (IsSeedEmpty())
+        if (IsEmptyString(generationSeed))
         {
-            instance.seedOrRandomIfEmpty = Time.time.ToString();
+            generationSeed = Time.realtimeSinceStartup.ToString();
         }
         
-        GameUtils.SetCurrentSeed(instance.seedOrRandomIfEmpty);
-        System.Random pseudoRandom = new System.Random(instance.seedOrRandomIfEmpty.GetHashCode());
+        GameUtils.SetCurrentSeed(generationSeed);
+        System.Random pseudoRandom = new System.Random(generationSeed.GetHashCode());
         
         for(float x = -instance.maxPositionX; x < instance.maxPositionX; x++)
         {
@@ -193,9 +193,9 @@ public class GameController : MonoBehaviour
         }
     }
     
-    private static bool IsSeedEmpty()
+    private static bool IsEmptyString(string str)
     {
-        return (instance.seedOrRandomIfEmpty == null || instance.seedOrRandomIfEmpty.Trim().Equals(""));
+        return (str == null || str.Trim().Equals(""));
     }
 
     private static float getNextRandomBetween(System.Random pseudoRand, float minusValue, float maxValue) {

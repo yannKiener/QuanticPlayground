@@ -46,6 +46,7 @@ public class Player : MonoBehaviour
         gameObject.AddComponent<QuantumTrailingSystem>();
         playerRigidbody.sharedMaterial = quantumBallBounciness;
         playerRigidbody.gravityScale = 0.0f;
+        MusicManager.PlayQuantumMusic();
     }
 
     private void switchToBasic()
@@ -60,5 +61,6 @@ public class Player : MonoBehaviour
         }
         playerRigidbody.sharedMaterial = basicBallBounciness;
         playerRigidbody.gravityScale = gravityScale;
+        MusicManager.PlayBasicMusic();
     }
 }

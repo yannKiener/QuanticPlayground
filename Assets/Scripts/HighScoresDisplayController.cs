@@ -23,7 +23,10 @@ public class HighScoresDisplayController : MonoBehaviour
     private void OnEnable()
     {
         int currentScore = GameUtils.GetScore();
-        GameUtils.SaveScore(currentScore);
+        if (!GameController.getInstance().isTutorial)
+        {
+            GameUtils.SaveScore(currentScore);
+        }
         if (IsBestScore(currentScore)) {
             ggPanel.SetActive(true);
         }

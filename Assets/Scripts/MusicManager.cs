@@ -4,69 +4,56 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    public AudioClip StartingMusic;
+    public AudioClip basicMusic;
+    public AudioClip quantumMusic;
+    public AudioClip endMusic;
 
     private static MusicManager instance;
 	private AudioSource audioSource;
     private bool isFading = false;
     private static float maxVolume = 1;
+    private float musicTimer = 0;
 
     public void Start()
     {
+        musicTimer = 0;
         audioSource = gameObject.GetComponent<AudioSource>();
         instance = this;
-		if(StartingMusic != null){
-			PlayMusic(StartingMusic);
-		}
-    } 
-
-
-    public static void PlayMusic(AudioClip music){
-
-		if (music != instance.audioSource.clip && instance.audioSource.isPlaying && !instance.isFading)
-        {
-            instance.isFading = true;
-            instance.StartCoroutine(fadeOutThenFadeIn(music, 1f));
-        } else
-        {
-            instance.StartCoroutine(fadeIn(music,1f));
-        }
-        if (!instance.audioSource.isPlaying)
-        {
-            instance.audioSource.clip = music;
-            instance.audioSource.Play();
-        }
-	}
-    
-
-	private static IEnumerator fadeIn(AudioClip music, float fadeTime)
-    {
-        instance.isFading = false;
-        instance.audioSource.clip = music;
-        if (!instance.isFading && !instance.audioSource.isPlaying)
-        {
-            instance.audioSource.Play();
-        }
-        while (!instance.isFading && instance.audioSource.volume < maxVolume)
-        {
-            instance.audioSource.volume +=  Time.deltaTime / fadeTime;
-
-            yield return null;
-        }
-
+        PlayBasicMusic();
     }
 
-    private static IEnumerator fadeOutThenFadeIn(AudioClip music, float fadeTime)
+    private void Update()
     {
-        while (instance.isFading && instance.audioSource.volume > 0.1 * maxVolume)
-        {
-            instance.audioSource.volume -= Time.deltaTime / fadeTime * maxVolume;
+        musicTimer += Time.unscaledDeltaTime;
+    }
 
-            yield return null;
+    public static void PlayBasicMusic()
+    {
+        if (instance.basicMusic != instance.audioSource.clip)
+        {
+            instance.audioSource.clip = instance.basicMusic;
+            instance.audioSource.time = instance.musicTimer;
+            instance.audioSource.Play();
         }
-        yield return null;
-        if (instance.isFading) { 
-            instance.StartCoroutine(fadeIn(music, fadeTime));
+    }
+
+    public static void PlayQuantumMusic()
+    {
+        if (instance.quantumMusic != instance.audioSource.clip)
+        {
+            instance.audioSource.clip = instance.quantumMusic;
+            instance.audioSource.time = instance.musicTimer;
+            instance.audioSource.Play();
+        }
+    }
+
+    public static void PlayEndMusic()
+    {
+        if (instance.endMusic != instance.audioSource.clip)
+        {
+            instance.audioSource.clip = instance.endMusic;
+            instance.audioSource.time = 0f;
+            instance.audioSource.Play();
         }
     }
 }

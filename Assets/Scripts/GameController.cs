@@ -132,6 +132,7 @@ public class GameController : MonoBehaviour
             }
         } else
         {
+            MusicManager.PlayEndMusic();
             if (GameUtils.IsGameWon())
             {
                 tutorialWonScreen.SetActive(true);

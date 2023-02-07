@@ -44,7 +44,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04f17a9d037445247b0b406425887e0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingMusic: {fileID: 8300000, guid: 5ed0510520bf8a84eb5f44ca7a49a58a, type: 3}
+  basicMusic: {fileID: 8300000, guid: 5ad33d4d911a48f4384f047e3d9c776a, type: 3}
+  quantumMusic: {fileID: 8300000, guid: e9489c05c59d02748b7e71e9b91b9ce8, type: 3}
+  endMusic: {fileID: 8300000, guid: 5b2f35836c27c9d43b46a76b82ccedfb, type: 3}
 --- !u!82 &6826724042289714599
 AudioSource:
   m_ObjectHideFlags: 0
@@ -59,7 +61,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

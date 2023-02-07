@@ -29,7 +29,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameUtils.IsGameOver())
+        if (!GameUtils.IsGameOver())
         {
             playerSpeed = playerRigidBody.velocity.magnitude;
             GameUtils.AddScore(Time.deltaTime * playerSpeed * playerSpeed * playerSpeed * scoreSpeedMultiplier);

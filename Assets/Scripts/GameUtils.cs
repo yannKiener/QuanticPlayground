@@ -31,6 +31,7 @@ public static class GameUtils
     public static void GameOver()
     {
         isGameOver = true;
+        SoundManager.PlayGameOverSound();
     }
 
     public static int GetScore()

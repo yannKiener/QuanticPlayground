@@ -25,6 +25,7 @@ public class WallBehaviour : MonoBehaviour
                 if (isQuantumKiller)
                 {
                     Destroy(col.gameObject, destroyDelay);
+                    GameUtils.GameOver();
                     Debug.Log("LOL GAME OVER");
                 }
 
@@ -43,6 +44,7 @@ public class WallBehaviour : MonoBehaviour
                 if (isBasicKiller)
                 {
                     Destroy(col.gameObject, destroyDelay);
+                    GameUtils.GameOver();
                     Debug.Log("LOL GAME OVER");
                 }
 

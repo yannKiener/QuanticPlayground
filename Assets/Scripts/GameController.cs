@@ -65,10 +65,17 @@ public class GameController : MonoBehaviour
     {
         if (!GameUtils.IsGameOver())
         {
-            playerSpeed = playerRigidBody.velocity.magnitude;
-            GameUtils.AddScore(Time.deltaTime * playerSpeed * playerSpeed * playerSpeed * scoreSpeedMultiplier);
-            scoreText.text = scorePreText + GameUtils.GetScore();
-            gameOverScoreText.text = GameUtils.GetScore().ToString(); 
+            if(playerRigidBody != null)
+            {
+                playerSpeed = playerRigidBody.velocity.magnitude;
+                GameUtils.AddScore(Time.deltaTime * playerSpeed * playerSpeed * playerSpeed * scoreSpeedMultiplier);
+                scoreText.text = scorePreText + GameUtils.GetScore();
+                gameOverScoreText.text = GameUtils.GetScore().ToString();
+            }
+            else
+            {
+                Debug.Log("Player rigidBody is null ! Let's hope it's only this frame..?");
+            }
         } else
         {
             gameOverGameObject.SetActive(true);

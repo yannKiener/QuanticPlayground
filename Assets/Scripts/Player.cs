@@ -21,18 +21,21 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
-        {
-            if (GameUtils.IsPlayerinQuantumMode())
+        if (!GameUtils.IsGamePaused())
+        { 
+            if (Input.GetKeyDown("space") || Input.GetMouseButtonDown(0))
             {
-                switchToBasic();
-            } else
-            {
-                switchToQuantum();
-            }
+                if (GameUtils.IsPlayerinQuantumMode())
+                {
+                    switchToBasic();
+                } else
+                {
+                    switchToQuantum();
+                }
 
+            }
         }
-        
+
     }
 
     private void switchToQuantum()

@@ -8,6 +8,7 @@ public static class GameUtils
     private static bool isPlayerQuantum = false;
     private static float score = 0;
     private static bool isGameOver = false;
+    private static bool isGamePaused = false;
 
     public static bool IsPlayerinQuantumMode()
     {
@@ -45,5 +46,15 @@ public static class GameUtils
     public static void AddScore(float scoreToAdd)
     {
         score += scoreToAdd;
+    }
+
+    public static void PauseGame(bool isPaused)
+    {
+        isGamePaused = isPaused;
+    }
+
+    public static bool IsGamePaused()
+    {
+        return isGamePaused;
     }
 }

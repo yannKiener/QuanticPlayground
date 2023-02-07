@@ -26,7 +26,6 @@ public class WallBehaviour : MonoBehaviour
                 {
                     Destroy(col.gameObject, destroyDelay);
                     GameUtils.GameOver();
-                    Debug.Log("LOL GAME OVER");
                 }
 
                 if (isQuantumBreakable)
@@ -45,7 +44,6 @@ public class WallBehaviour : MonoBehaviour
                 {
                     Destroy(col.gameObject, destroyDelay);
                     GameUtils.GameOver();
-                    Debug.Log("LOL GAME OVER");
                 }
 
                 if (isBasicBreakable)

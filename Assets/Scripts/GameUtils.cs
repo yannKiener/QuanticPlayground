@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class GameUtils 
 {
@@ -26,6 +27,8 @@ public static class GameUtils
     public static void StartGame()
     {
         isGameOver = false;
+        score = 0;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
     public static void GameOver()

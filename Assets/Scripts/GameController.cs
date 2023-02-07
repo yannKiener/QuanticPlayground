@@ -57,6 +57,7 @@ public class GameController : MonoBehaviour
     public GameObject scoreTextGameObject;
     public string timerPreText;
     public GameObject timeTextGameObject;
+    public GameObject RandomLevelGameOverButton;
 
 
     private Rigidbody2D playerRigidBody;
@@ -80,6 +81,7 @@ public class GameController : MonoBehaviour
         gameOverScoreText = gameOverScoreNumberGameObject.GetComponent<Text>();
         if (isTutorial)
         {
+            RandomLevelGameOverButton.SetActive(false);
             scoreTextGameObject.SetActive(false);
             gameOverScoreText.text = "-";
         }

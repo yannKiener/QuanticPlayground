@@ -147,11 +147,17 @@ Transform:
   - {fileID: 1448366326}
   - {fileID: 797938391}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &455786671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1048528705883236411, guid: 55b69ff8423d4de4d914bc969d9dcd41,
+    type: 3}
+  m_PrefabInstance: {fileID: 1048528705461332116}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &705602466 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3895015749958328732, guid: 55b69ff8423d4de4d914bc969d9dcd41,
     type: 3}
   m_PrefabInstance: {fileID: 1048528705461332116}
   m_PrefabAsset: {fileID: 0}
@@ -319,6 +325,75 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1048528705461332116}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1620125124
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3791951773972214444, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_Name
+      value: BreakableMask
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3791951773972214446, guid: e3b8588296c1f594d9c3101cbfacb42a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e3b8588296c1f594d9c3101cbfacb42a, type: 3}
 --- !u!1001 &1641594386
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -798,7 +873,7 @@ PrefabInstance:
     - target: {fileID: 1048528704706889980, guid: 55b69ff8423d4de4d914bc969d9dcd41,
         type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1048528704706889980, guid: 55b69ff8423d4de4d914bc969d9dcd41,
         type: 3}
@@ -1034,6 +1109,11 @@ PrefabInstance:
       propertyPath: tutorialWonScreen
       value: 
       objectReference: {fileID: 974606516}
+    - target: {fileID: 1942791722792503550, guid: 647b8b5df6284404c9b6d78f4dd67cc2,
+        type: 3}
+      propertyPath: RandomLevelGameOverButton
+      value: 
+      objectReference: {fileID: 705602466}
     - target: {fileID: 1942791722792503551, guid: 647b8b5df6284404c9b6d78f4dd67cc2,
         type: 3}
       propertyPath: m_LocalPosition.x

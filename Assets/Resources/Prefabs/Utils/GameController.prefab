@@ -49,8 +49,8 @@ MonoBehaviour:
   startGameDelay: 1
   basicBackgroundColor: {r: 0.754717, g: 0.66571736, b: 0.66571736, a: 1}
   quantumBackgroundColor: {r: 0.41960785, g: 0.13333334, b: 0.38039216, a: 1}
-  playerBasicColor: {r: 0.54509807, g: 0.023529412, b: 0.972549, a: 1}
-  playerQuantumColor: {r: 0, g: 0, b: 0, a: 1}
+  playerBasicColor: {r: 0.972549, g: 0.88107514, b: 0.02352939, a: 1}
+  playerQuantumColor: {r: 0.7545735, g: 0.023529433, b: 0.99215686, a: 1}
   wallColor: {r: 0, g: 0, b: 0, a: 1}
   basicBreakableWallColor: {r: 0.07112521, g: 0.9433962, b: 0, a: 1}
   quantumBreakableWallColor: {r: 0.9622642, g: 0.44518408, b: 0, a: 1}

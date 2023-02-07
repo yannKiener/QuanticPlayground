@@ -6,11 +6,24 @@ public class InGameMenu : MonoBehaviour
 {
     public GameObject IngameMenu;
 
+    public GameObject skipTutorialGameObject;
+    public GameObject randomLevelGameObject;
+
+
     private bool isMenuActivated = false;
     // Start is called before the first frame update
     void Start()
     {
         IngameMenu.SetActive(isMenuActivated);
+        if (GameController.getInstance().isTutorial)
+        {
+            skipTutorialGameObject.SetActive(true);
+            randomLevelGameObject.SetActive(false);
+        } else
+        {
+            randomLevelGameObject.SetActive(true);
+            skipTutorialGameObject.SetActive(false);
+        }
     }
 
     // Update is called once per frame

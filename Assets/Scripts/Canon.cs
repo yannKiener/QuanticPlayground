@@ -16,7 +16,6 @@ public class Canon : MonoBehaviour
         Rigidbody2D playerRBody = playerToFire.GetComponent<Rigidbody2D>();
         playerRBody.AddForce(fireForce, ForceMode2D.Impulse);
         Destroy(gameObject, moveAfter + deleteAfterMove);
-
     }
 
     // Update is called once per frame
@@ -25,7 +24,13 @@ public class Canon : MonoBehaviour
         moveAfter -= Time.deltaTime;
         if (moveAfter < 0)
         {
-            transform.position = transform.position - new Vector3(Time.deltaTime * moveSpeed, 0, 0);
+            if (GetComponent<SpriteRenderer>().flipX)
+            {
+                transform.position = transform.position + new Vector3(Time.deltaTime * moveSpeed, 0, 0);
+            } else
+            {
+                transform.position = transform.position - new Vector3(Time.deltaTime * moveSpeed, 0, 0);
+            }
         }
     }
 }

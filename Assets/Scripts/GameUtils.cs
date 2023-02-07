@@ -37,7 +37,7 @@ public static class GameUtils
     {
         resetGameInfo();
         currentSeed = null;
-        SceneManager.LoadScene("SeededArena");
+        SceneManager.LoadScene("RandomPlayground");
     }
     
     private static void resetGameInfo()
@@ -85,9 +85,9 @@ public static class GameUtils
         return elapsedTime;
     }
     
-    public static bool IsRandomArena()
+    public static bool IsRandomPlayground()
     {
-        return "SeededArena".Equals(SceneManager.GetActiveScene().name);
+        return "RandomPlayground".Equals(SceneManager.GetActiveScene().name);
     }
     
     public static void SetCurrentSeed(string seed)

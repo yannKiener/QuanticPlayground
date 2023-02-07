@@ -13,16 +13,27 @@ public class GameController : MonoBehaviour
     public GameObject gameOverGameObject;
     public GameObject gameOverScoreTextGameObject;
 
+    public Color wallColor;
+    public Color basicBreakableWallColor;
+    public Color quantumBreakableWallColor;
+    public Color alwaysBreakableWallColor;
+    public Color basicKillerWallColor;
+    public Color quantumKillerWallColor;
+    public Color alwaysKillerWallColor;
+
     private Rigidbody2D playerRigidBody;
     private float playerSpeed;
     private Text scoreText;
     private Text gameOverScoreText;
+
+    private static GameController instance;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
+        instance = this;
         playerRigidBody = playerGameObject.GetComponent<Rigidbody2D>();
         scoreText = scoreTextGameObject.GetComponent<Text>();
         gameOverScoreText = gameOverScoreTextGameObject.GetComponent<Text>();
@@ -42,5 +53,10 @@ public class GameController : MonoBehaviour
         {
             gameOverGameObject.SetActive(true);
         }
+    }
+
+    public static GameController getInstance()
+    {
+        return instance;
     }
 }

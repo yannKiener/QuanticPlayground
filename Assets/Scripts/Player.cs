@@ -9,7 +9,6 @@ public class Player : MonoBehaviour
     public Color quantumBackgroundColor;
 
     private SpriteRenderer backgroundSpRenderer;
-    private bool isInQuantum = false;
 
     private SpriteRenderer playerSpRenderer;
     private Rigidbody2D playerRigidbody;
@@ -35,7 +34,7 @@ public class Player : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            if (isInQuantum)
+            if (GameUtils.IsPlayerinQuantumMode())
             {
                 switchToBasic();
             } else
@@ -49,8 +48,8 @@ public class Player : MonoBehaviour
 
     private void switchToQuantum()
     {
-        Debug.Log("Switched to Quantum world");
-        isInQuantum = true;
+        //Debug.Log("Switched to Quantum world");
+        GameUtils.SetPlayerIsQuantum(true);
         backgroundSpRenderer.color = quantumBackgroundColor;
         playerSpRenderer.color = playerQuantumColor;
         playerRigidbody.sharedMaterial = quantumBallBounciness;
@@ -59,8 +58,8 @@ public class Player : MonoBehaviour
 
     private void switchToBasic()
     {
-        Debug.Log("Switched to Basic world");
-        isInQuantum = false;
+        //Debug.Log("Switched to Basic world");
+        GameUtils.SetPlayerIsQuantum(false);
         backgroundSpRenderer.color = basicBackgroundColor;
         playerSpRenderer.color = playerBasicColor;
         playerRigidbody.sharedMaterial = basicBallBounciness;

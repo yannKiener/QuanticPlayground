@@ -12,7 +12,6 @@ public class GameController : MonoBehaviour
     public GameObject scoreTextGameObject;
 
     private Rigidbody2D playerRigidBody;
-    private float score = 0;
     private float playerSpeed;
     private Text scoreText;
 
@@ -28,9 +27,12 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        playerSpeed = playerRigidBody.velocity.magnitude;
-        score += Time.deltaTime * playerSpeed * playerSpeed * playerSpeed * scoreSpeedMultiplier;
-        scoreText.text = scorePreText + (int)(score);
+        if (GameUtils.IsGameOver())
+        {
+            playerSpeed = playerRigidBody.velocity.magnitude;
+            GameUtils.AddScore(Time.deltaTime * playerSpeed * playerSpeed * playerSpeed * scoreSpeedMultiplier);
+            scoreText.text = scorePreText + GameUtils.GetScore();
+        }
 
     }
 }

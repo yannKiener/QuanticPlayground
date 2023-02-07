@@ -6,6 +6,6 @@ public class InGameTryAgainButton : MonoBehaviour
 {
     public void TryAgain()
     {
-        GameUtils.StartGame();
+        GameUtils.ReStartGame();
     }
 }

@@ -120,7 +120,18 @@ public class WallBehaviour : MonoBehaviour
 
     void OnCollisionStay2D(Collision2D col)
     {
-        if(col.gameObject.name == "Player")
+        handleCollision(col);
+    }
+
+    private void OnCollisionEnter2D(Collision2D col)
+    {
+        handleCollision(col);
+
+    }
+
+    private void handleCollision(Collision2D col)
+    {
+        if (col.gameObject.name == "Player")
         {
             if (GameUtils.IsPlayerinQuantumMode())
             {
@@ -140,7 +151,8 @@ public class WallBehaviour : MonoBehaviour
                     Debug.Log("You will go trough some other day.");
                 }
 
-            } else
+            }
+            else
             {
                 if (isBasicKiller)
                 {
@@ -158,7 +170,6 @@ public class WallBehaviour : MonoBehaviour
                     Debug.Log("You will go trough some other day.");
                 }
             }
-
         }
     }
 

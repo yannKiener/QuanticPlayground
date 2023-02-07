@@ -42,6 +42,16 @@ public class GameController : MonoBehaviour
     public float trailTimer;
     public float trailDuration;
 
+    [Header("Seeding settings")]
+    public string seedOrRandomIfEmpty;
+    public List<GameObject> prefabsList;
+    [Range(0, 100)]
+    public int density;
+    public int maxObjectAttempts;
+    public float maxPositionY;
+    public float maxPositionX;
+
+
     private Rigidbody2D playerRigidBody;
     private float playerSpeed;
     private Text scoreText;
@@ -67,6 +77,11 @@ public class GameController : MonoBehaviour
         gameOverGameObject.SetActive(false);
         backgroundSpRenderer = background.GetComponent<SpriteRenderer>();
         playerSpRenderer = playerGameObject.GetComponent<SpriteRenderer>();
+
+        if (GameUtils.IsRandomArena() && maxObjectAttempts != 0)
+        {
+            GenerateMap();
+        }
     }
 
     // Update is called once per frame
@@ -114,5 +129,29 @@ public class GameController : MonoBehaviour
     public static GameController getInstance()
     {
         return instance;
+    }
+
+    public static void GenerateMap()
+    {
+        if(instance.seedOrRandomIfEmpty == null || instance.seedOrRandomIfEmpty.Trim().Equals(""))
+        {
+            Debug.Log("Empty string, random seeding.");
+            instance.seedOrRandomIfEmpty = Time.time.ToString();
+        }
+        System.Random pseudoRandom = new System.Random(instance.seedOrRandomIfEmpty.GetHashCode());
+        
+        for(int i = 0; i < instance.maxObjectAttempts; i++)
+        {
+            if (pseudoRandom.Next(0, 100) <= instance.density)
+            {
+                GameObject randomPrefab = instance.prefabsList[Random.Range(0, instance.prefabsList.Count)];
+                randomPrefab = Instantiate(randomPrefab);
+                Debug.Log("Instantiating : " + randomPrefab.name);
+                float positionX = Mathf.Clamp((float)pseudoRandom.NextDouble() - 0.5f, -0.5f, 0.5f) * instance.maxPositionX;
+                float positionY = Mathf.Clamp((float)pseudoRandom.NextDouble() - 0.5f, -0.5f, 0.5f) * instance.maxPositionY;
+                randomPrefab.transform.position = new Vector3(positionX, positionY, 0);
+
+            }
+        }
     }
 }

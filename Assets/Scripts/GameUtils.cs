@@ -26,12 +26,21 @@ public static class GameUtils
         return isGameOver;
     }
 
-    public static void StartGame()
+    public static void ReStartGame()
     {
+        Debug.Log("restarting Game");
         isGameOver = false;
         score = 0;
         elapsedTime = 0;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public static void StartRandomGame()
+    {
+        isGameOver = false;
+        score = 0;
+        elapsedTime = 0;
+        SceneManager.LoadScene("SeededArena");
     }
 
     public static void GameOver()
@@ -68,5 +77,10 @@ public static class GameUtils
     public static float GetElapsedTime()
     {
         return elapsedTime;
+    }
+    
+    public static bool IsRandomArena()
+    {
+        return "SeededArena".Equals(SceneManager.GetActiveScene().name);
     }
 }
